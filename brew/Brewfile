@@ -1,0 +1,81 @@
+tap 'homebrew/bundle'
+tap 'homebrew/cask'
+tap 'homebrew/cask-fonts'
+tap 'homebrew/core'
+
+brew 'asdf' # Manages multiple runtime versions of tools
+brew 'autojump' # Allows quickly jumping to folders
+brew 'awscli' # Official Amazon Web Services CLI
+brew 'bat' # Cat command with syntax highlighting
+brew 'fd' # Modern replacement for find command
+brew 'gh' # CLI for using Github
+brew 'gpg' # GnuPG, an encryption system required by Asdf
+brew 'httpie' # Cleaner version of cURL
+brew 'loc' # Counts lines of code in a folder
+brew 'lsd' # The next geneation ls command
+brew 'mackup' # Keeps your application settings in sync
+brew 'mas' # Mac App Store manager using Brew
+brew 'speedtest-cli' # Runs internet speed test in terminal
+brew 'svn' # Apache Subversion, required for some font casks
+brew 'trash' # Manages the trash bin
+brew 'tree' # Visualizes a folder hierarchy
+brew 'wget' # Allows retrieving content from HTTP
+
+cask '1password' # Password manager
+cask 'bartender' # Utility to hides menu bar icons
+cask 'bitwarden' # Password manager
+cask 'cleanmymac' # Cleans Mac for junk
+cask 'docker' # Virtualizes container-based environments
+cask 'discord' # Chat application
+cask 'firefox' # Web browser
+cask 'google-chrome' # Web browser
+cask 'iterm2' # Terminal replacement for Mac
+cask 'loopback' # Utility to allow sharing computer sound
+cask 'microsoft-edge' # Web browser
+cask 'nordvpn' # Virtual Private Network
+cask 'notion' # Advanced notes application
+cask 'postman' # HTTP client
+cask 'sketch' # Design application
+cask 'slack' # Chat application
+cask 'tableplus' # GUI based database manager
+cask 'teamviewer' # Screen sharing application
+cask 'visual-studio-code' # A code editor
+cask 'zoom' # Chat application
+
+mas 'Magnet', id: 441258766 # Utility to handle resizing of windows
+
+cask 'font-cascadia-mono'
+cask 'font-cookie'
+cask 'font-courgette'
+cask 'font-dancing-script'
+cask 'font-exo-2'
+cask 'font-fira-code'
+cask 'font-fira-sans'
+cask 'font-fredoka-one'
+cask 'font-inconsolata'
+cask 'font-inter'
+cask 'font-jetbrains-mono'
+cask 'font-lato'
+cask 'font-lobster'
+cask 'font-merriweather'
+cask 'font-mulish'
+cask 'font-merriweather-sans'
+cask 'font-noto-sans'
+cask 'font-nunito'
+cask 'font-open-sans'
+cask 'font-oxygen'
+cask 'font-pacifico'
+cask 'font-playfair-display'
+cask 'font-poppins'
+cask 'font-roboto'
+cask 'font-roboto-mono'
+cask 'font-rubik'
+cask 'font-satisfy'
+cask 'font-source-code-pro'
+cask 'font-source-sans-pro'
+cask 'font-source-serif-pro'
+cask 'font-spectral'
+cask 'font-style-script'
+cask 'font-titillium'
+cask 'font-varela'
+cask 'font-varela-round'
