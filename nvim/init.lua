@@ -1,4 +1,2 @@
-vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-
-print("Welcome back to nvim, Torgeir")
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
