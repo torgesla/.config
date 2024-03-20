@@ -1,12 +1,22 @@
-[font]
-size = 35
+[cursor]
+style = {shape = "Underline"}
 
-[font.normal]
-family = "UbuntuMono Nerd Font"
+
+[font]
+size = 14
+bold = {family = "Hack Nerd Font", style = "Bold"}
+bold_italic = {family = "Hack Nerd Font", style = "Regular"}
+italic = {family = "Hack Nerd Font", style = "Italic"}
+normal = {family = "Hack Nerd Font", style = "Regular"}
+
+[mouse]
+hide_when_typing = true
+
+[selection]
+save_to_clipboard = true
 
 [window]
 decorations = "none"
+opacity = 0.95
+padding = {x = 7, y = 0}
 
-[window.padding]
-x = 7
-y = 0
