@@ -1,8 +1,11 @@
+# import = ["/Users/torgeir/.config/alacritty/themes/alacritty/dracula.toml"]
 live_config_reload = true
 
 [cursor]
 style = {shape = "Underline"}
 
+[env]
+term = "xterm-256color"
 
 [font]
 size = 14
@@ -12,7 +15,7 @@ italic = {family = "Hack Nerd Font", style = "Italic"}
 normal = {family = "Hack Nerd Font", style = "Regular"}
 
 [mouse]
-hide_when_typing = true
+# hide_when_typing = true
 
 [scrolling]
 history = 10000
@@ -22,9 +25,12 @@ multiplier = 3
 save_to_clipboard = true
 
 [window]
-decorations = "none"
-opacity = 0.95
-padding = {x = 7, y = 0}
+blur = true
+decorations = "buttonless"
+dynamic_padding = false
+opacity = 0.80
+padding = {x = 5, y = 0}
+startup_mode = "Maximized"
 
 [colors.primary]
 
