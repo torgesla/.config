@@ -1,81 +1,112 @@
-tap 'homebrew/bundle'
-tap 'homebrew/cask'
-tap 'homebrew/cask-fonts'
-tap 'homebrew/core'
-
-brew 'asdf' # Manages multiple runtime versions of tools
-brew 'autojump' # Allows quickly jumping to folders
-brew 'awscli' # Official Amazon Web Services CLI
-brew 'bat' # Cat command with syntax highlighting
-brew 'fd' # Modern replacement for find command
-brew 'gh' # CLI for using Github
-brew 'gpg' # GnuPG, an encryption system required by Asdf
-brew 'httpie' # Cleaner version of cURL
-brew 'loc' # Counts lines of code in a folder
-brew 'lsd' # The next geneation ls command
-brew 'mackup' # Keeps your application settings in sync
-brew 'mas' # Mac App Store manager using Brew
-brew 'speedtest-cli' # Runs internet speed test in terminal
-brew 'svn' # Apache Subversion, required for some font casks
-brew 'trash' # Manages the trash bin
-brew 'tree' # Visualizes a folder hierarchy
-brew 'wget' # Allows retrieving content from HTTP
-
-cask '1password' # Password manager
-cask 'bartender' # Utility to hides menu bar icons
-cask 'bitwarden' # Password manager
-cask 'cleanmymac' # Cleans Mac for junk
-cask 'docker' # Virtualizes container-based environments
-cask 'discord' # Chat application
-cask 'firefox' # Web browser
-cask 'google-chrome' # Web browser
-cask 'iterm2' # Terminal replacement for Mac
-cask 'loopback' # Utility to allow sharing computer sound
-cask 'microsoft-edge' # Web browser
-cask 'nordvpn' # Virtual Private Network
-cask 'notion' # Advanced notes application
-cask 'postman' # HTTP client
-cask 'sketch' # Design application
-cask 'slack' # Chat application
-cask 'tableplus' # GUI based database manager
-cask 'teamviewer' # Screen sharing application
-cask 'visual-studio-code' # A code editor
-cask 'zoom' # Chat application
-
-mas 'Magnet', id: 441258766 # Utility to handle resizing of windows
-
-cask 'font-cascadia-mono'
-cask 'font-cookie'
-cask 'font-courgette'
-cask 'font-dancing-script'
-cask 'font-exo-2'
-cask 'font-fira-code'
-cask 'font-fira-sans'
-cask 'font-fredoka-one'
-cask 'font-inconsolata'
-cask 'font-inter'
-cask 'font-jetbrains-mono'
-cask 'font-lato'
-cask 'font-lobster'
-cask 'font-merriweather'
-cask 'font-mulish'
-cask 'font-merriweather-sans'
-cask 'font-noto-sans'
-cask 'font-nunito'
-cask 'font-open-sans'
-cask 'font-oxygen'
-cask 'font-pacifico'
-cask 'font-playfair-display'
-cask 'font-poppins'
-cask 'font-roboto'
-cask 'font-roboto-mono'
-cask 'font-rubik'
-cask 'font-satisfy'
-cask 'font-source-code-pro'
-cask 'font-source-sans-pro'
-cask 'font-source-serif-pro'
-cask 'font-spectral'
-cask 'font-style-script'
-cask 'font-titillium'
-cask 'font-varela'
-cask 'font-varela-round'
+tap "epk/epk"
+tap "homebrew/bundle"
+tap "homebrew/cask-fonts"
+tap "homebrew/services"
+brew "jpeg-xl"
+brew "aom"
+brew "apr-util"
+brew "libssh2"
+brew "bat"
+brew "colima"
+brew "colordiff"
+brew "rtmpdump"
+brew "freetds"
+brew "libavif"
+brew "krb5"
+brew "php"
+brew "composer"
+brew "docker"
+brew "docker-credential-helper"
+brew "fish"
+brew "fzf"
+brew "git"
+brew "lazygit"
+brew "loc"
+brew "lsd"
+brew "neovim"
+brew "openssl@1.1"
+brew "podman"
+brew "pyenv"
+brew "redis"
+brew "ripgrep"
+brew "stow"
+brew "tmux"
+brew "tree"
+brew "volta"
+brew "zoxide"
+cask "alacritty"
+cask "alfred"
+cask "alt-tab"
+cask "amethyst"
+cask "dbngin"
+cask "discord"
+cask "dropzone"
+cask "font-hack-nerd-font"
+cask "font-sf-mono-nerd-font"
+cask "iterm2"
+cask "ngrok"
+cask "numi"
+cask "obsidian"
+cask "podman-desktop"
+cask "raycast"
+cask "telegram"
+cask "tidal"
+cask "whatsapp"
+vscode "albert.tabout"
+vscode "bmewburn.vscode-intelephense-client"
+vscode "burkeholland.simple-react-snippets"
+vscode "christian-kohler.npm-intellisense"
+vscode "cssho.vscode-svgviewer"
+vscode "davidanson.vscode-markdownlint"
+vscode "dbaeumer.vscode-eslint"
+vscode "dsznajder.es7-react-js-snippets"
+vscode "eamodio.gitlens"
+vscode "editorconfig.editorconfig"
+vscode "esbenp.prettier-vscode"
+vscode "fabiospampinato.vscode-diff"
+vscode "github.copilot"
+vscode "github.copilot-chat"
+vscode "github.vscode-pull-request-github"
+vscode "graphql.vscode-graphql"
+vscode "graphql.vscode-graphql-execution"
+vscode "graphql.vscode-graphql-syntax"
+vscode "hashicorp.terraform"
+vscode "jock.svg"
+vscode "juanblanco.solidity"
+vscode "liamhammett.inline-parameters"
+vscode "mikestead.dotenv"
+vscode "ms-azuretools.vscode-docker"
+vscode "ms-kubernetes-tools.vscode-kubernetes-tools"
+vscode "ms-python.debugpy"
+vscode "ms-python.isort"
+vscode "ms-python.python"
+vscode "ms-python.vscode-pylance"
+vscode "ms-toolsai.jupyter"
+vscode "ms-toolsai.jupyter-keymap"
+vscode "ms-toolsai.jupyter-renderers"
+vscode "ms-toolsai.vscode-jupyter-cell-tags"
+vscode "ms-toolsai.vscode-jupyter-slideshow"
+vscode "ms-vscode-remote.remote-containers"
+vscode "ms-vsliveshare.vsliveshare"
+vscode "msjsdiag.vscode-react-native"
+vscode "orta.vscode-twoslash-queries"
+vscode "pkief.material-icon-theme"
+vscode "prisma.prisma"
+vscode "redhat.vscode-yaml"
+vscode "reditorsupport.r"
+vscode "rust-lang.rust-analyzer"
+vscode "sdras.night-owl"
+vscode "statelyai.stately-vscode"
+vscode "stkb.rewrap"
+vscode "streetsidesoftware.code-spell-checker"
+vscode "techer.open-in-browser"
+vscode "tomoki1207.pdf"
+vscode "tomrijndorp.find-it-faster"
+vscode "unifiedjs.vscode-mdx"
+vscode "vercel.turbo-vsc"
+vscode "vscodevim.vim"
+vscode "waderyan.gitblame"
+vscode "wix.glean"
+vscode "xdebug.php-debug"
+vscode "yoavbls.pretty-ts-errors"
+vscode "yzhang.markdown-all-in-one"
