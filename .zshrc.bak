@@ -20,16 +20,10 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-alias pn="pnpm"
-alias v="nvim"
-alias f="fzf"
-alias cd="z"
-alias diff="colordiff"
-alias lg="lazygit"
-# confirmation #
-alias cp='cp -i'
-alias ln='ln -i'
-alias mv='mv -i'
+alias pn=pnpm
+alias z=zoxide
+alias f=fzf
+
 
 # Source shell files
 for file in $HOME/.dotfiles/zsh/.{exports,functions,path,config,aliases}.zsh; do
@@ -57,6 +51,3 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export VOLTA_HOME="$HOME/.volta"
 export VOLTA_FEATURE_PNPM=1
 export PATH="$VOLTA_HOME/bin:$PATH"
-eval "$(zoxide init zsh)"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
