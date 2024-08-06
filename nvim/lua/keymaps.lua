@@ -19,9 +19,11 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- Fzf lua
 vim.keymap.set('n', '<leader>e', ":lua require('fzf-lua').files()<cr>", { desc = 'Fzf Files' })
--- vim.keymap.set('n', '<leader>e', function()
---  require('oil').open_float()
--- end)
+
+vim.keymap.set('n', '<leader>w', ':w<cr>', { desc = 'Write buffer' })
+vim.keymap.set('n', '<leader>o', function()
+  require('oil').open_float()
+end)
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
