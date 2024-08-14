@@ -23,6 +23,7 @@ source $ZSH/oh-my-zsh.sh
 alias pn="pnpm"
 alias v="nvim"
 alias f="fzf"
+alias cdold="cd"
 alias cd="z"
 alias diff="colordiff"
 alias lg="lazygit"
@@ -30,6 +31,7 @@ alias lg="lazygit"
 alias cp='cp -i'
 alias ln='ln -i'
 alias mv='mv -i'
+alias zshrc="nvim ~/.zshrc"
 
 # Source shell files
 for file in $HOME/.dotfiles/zsh/.{exports,functions,path,config,aliases}.zsh; do
@@ -58,5 +60,9 @@ export VOLTA_HOME="$HOME/.volta"
 export VOLTA_FEATURE_PNPM=1
 export PATH="$VOLTA_HOME/bin:$PATH"
 eval "$(zoxide init zsh)"
+
+if [ -z "$TMUX" ]; then
+    tmux 
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

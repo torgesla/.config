@@ -1,12 +1,6 @@
--- Pull in the wezterm API
 local wezterm = require("wezterm")
 
--- This will hold the configuration.
 local config = wezterm.config_builder()
-
--- This is where you actually apply your config choices
-
--- my coolnight colorscheme
 
 config.disable_default_key_bindings = true
 
@@ -14,13 +8,19 @@ local act = wezterm.action
 
 config.keys = {
 	{ key = "c", mods = "CMD", action = act.CopyTo("Clipboard") },
-	{ key = "n", mods = "CMD", action = act.SpawnWindow },
 	{ key = "v", mods = "CMD", action = act.PasteFrom("Clipboard") },
+	{ key = "n", mods = "CMD", action = act.SpawnWindow },
+	{ key = "q", mods = "CMD", action = act.QuitApplication },
 	{ key = "w", mods = "CMD", action = act.CloseCurrentPane({ confirm = true }) },
 	{ key = "+", mods = "CMD", action = act.IncreaseFontSize },
 	{ key = "-", mods = "CMD", action = act.DecreaseFontSize },
 }
-
+config.window_padding = {
+	left = 2,
+	right = 0,
+	top = 2,
+	bottom = 0,
+}
 config.color_scheme = "Catppuccin Mocha"
 
 --config.colors = {
@@ -44,5 +44,4 @@ config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.75
 config.macos_window_background_blur = 10
 
--- and finally, return the configuration to wezterm
 return config
