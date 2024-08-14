@@ -92,14 +92,13 @@ ctrl-alt-r = 'mode resize'
 [mode.resize.binding]
 esc = 'mode main'
 
-h = 'resize width -50'
-j = 'resize height +50'
-k = 'resize height -50'
-l = 'resize width +50'
+# h = 'resize width -50'
+# j = 'resize height -50'
+# k = 'resize height +50'
+# l = 'resize width +50'
 b = 'balance-sizes'
-
-equal = 'resize smart +50'
-minus = 'resize smart -50'
+k = 'resize smart +50'
+j = 'resize smart -50'
 
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
@@ -109,6 +108,10 @@ ctrl-alt-h = ['join-with left', 'mode main']
 ctrl-alt-j = ['join-with down', 'mode main']
 ctrl-alt-k = ['join-with up', 'mode main']
 ctrl-alt-l = ['join-with right', 'mode main']
+
+b = 'balance-sizes'
+k = 'resize smart +50'
+j = 'resize smart -50'
 
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
