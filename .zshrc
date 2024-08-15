@@ -27,6 +27,7 @@ alias cdold="cd"
 alias cd="z"
 alias diff="colordiff"
 alias lg="lazygit"
+alias ld="lazydocker"
 # confirmation #
 alias cp='cp -i'
 alias ln='ln -i'
