@@ -27,6 +27,8 @@ km.set('n', '<leader>o', function()
   require('oil').open_float()
 end)
 
+km.set('n', '<leader>t', '<cmd>ToggleTerm direction=float <cr>', { desc = 'Floating terminal' })
+
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
