@@ -1,20 +1,20 @@
 # Start AeroSpace at login
 start-at-login = false
 
+ctrl-alt-shift-equal = 'balance-sizes'
 # You can use it to add commands that run after login to macOS user session.
 # 'start-at-login' needs to be 'true' for 'after-login-command' to work
 after-login-command = []
 
 # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
-after-startup-command = []
+after-startup-command = [
+    'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=7.0'
+]
 
-# Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
-# The 'accordion-padding' specifies the size of accordion padding
-# You can set 0 to disable the padding feature
 accordion-padding = 30
 
 # Possible values: tiles|accordion
@@ -40,65 +40,58 @@ on-focus-changed = "move-mouse window-lazy-center"
 [gaps]
 inner.horizontal = 5
 inner.vertical =   5
-outer.left =       5
-outer.bottom =     5
-outer.top =        5
-outer.right =      5
+outer.bottom =     7    
+outer.left =       7
+outer.right =      7
+outer.top =        7
 
 [key-mapping.key-notation-to-key-code]
 Browser = 'b'
-Terminal = 't'
-Media = 'm'
 Code = 'c'
+Extra = 'e'
+Media = 'm'
+Slack = 's'
+Terminal = 't'
 
 [mode.main.binding]
-# All possible keys:
-# - Letters.        a, b, c, ..., z
-# - Numbers.        0, 1, 2, ..., 9
-# - F-keys.         f1, f2, ..., f20
-# - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon, backtick,
-#                   leftSquareBracket, rightSquareBracket, space, enter, esc, backspace, tab
-# - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
-#                   keypadMinus, keypadMultiply, keypadPlus
-# - Arrows.         left, down, up, right
-# All possible modifiers: cmd, alt, ctrl, shift
 
+# Switch workspace
+ctrl-alt-b = 'workspace Browser'
+ctrl-alt-c = 'workspace Code'
+ctrl-alt-e = 'workspace Extra'
+ctrl-alt-m = 'workspace Media'
+ctrl-alt-s = 'workspace Slack'
+ctrl-alt-t = 'workspace Terminal'
+
+# Focus direction
 alt-h = 'focus left'
 alt-j = 'focus down'
 alt-k = 'focus up'
 alt-l = 'focus right'
 
+# Move window direction
 ctrl-alt-h = 'move left'
 ctrl-alt-j = 'move down'
 ctrl-alt-k = 'move up'
 ctrl-alt-l = 'move right'
 
-alt-1 = 'workspace 1'
-alt-b = 'workspace Browser'
-alt-c = 'workspace Code'
-alt-m = 'workspace Media'
-alt-t = 'workspace Terminal'
+# Move node to workspace
+ctrl-alt-shift-b = ['move-node-to-workspace Browser', 'workspace Browser']
+ctrl-alt-shift-c = ['move-node-to-workspace Code', 'workspace Code']
+ctrl-alt-shift-e = ['move-node-to-workspace Extra','workspace Extra']
+ctrl-alt-shift-m = ['move-node-to-workspace Media','workspace Media']
+ctrl-alt-shift-s = ['move-node-to-workspace Slack', 'workspace Slack']
+ctrl-alt-shift-t = ['move-node-to-workspace Terminal','workspace Terminal']
+
+# Resize
+ctrl-alt-shift-h = 'resize smart -50'
+ctrl-alt-shift-j = 'resize smart -50'
+ctrl-alt-shift-k = 'resize smart +50'
+ctrl-alt-shift-l = 'resize smart +50'
 
 ctrl-alt-enter = 'fullscreen'
 ctrl-alt-comma = 'mode service'
-ctrl-alt-r = 'mode resize'
-
-# ctrl-alt-1 = 'move-node-to-workspace 1'
-# ctrl-alt-b = 'move-node-to-workspace Browser'
-# ctrl-alt-c = 'move-node-to-workspace Code'
-# ctrl-alt-m = 'move-node-to-workspace Media'
-# ctrl-alt-t = 'move-node-to-workspace Terminal'
-
-[mode.resize.binding]
-esc = 'mode main'
-
-# h = 'resize width -50'
-# j = 'resize height -50'
-# k = 'resize height +50'
-# l = 'resize width +50'
-b = 'balance-sizes'
-k = 'resize smart +50'
-j = 'resize smart -50'
+ctrl-alt-space = 'workspace-back-and-forth'
 
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
@@ -109,17 +102,17 @@ ctrl-alt-j = ['join-with down', 'mode main']
 ctrl-alt-k = ['join-with up', 'mode main']
 ctrl-alt-l = ['join-with right', 'mode main']
 
-b = 'balance-sizes'
-k = 'resize smart +50'
-j = 'resize smart -50'
-
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
 run = "move-node-to-workspace Terminal"
 
 [[on-window-detected]]
-if.app-id = 'com.google.Chrome'
-run = "move-node-to-workspace Code"
+if.app-id = 'com.electron.dockerdesktop'
+run = "move-node-to-workspace Terminal"
+
+# [[on-window-detected]]
+# if.app-id = 'com.google.Chrome'
+# run = "move-node-to-workspace Browser"
 
 [[on-window-detected]]
 if.app-id ='com.microsoft.VSCode' 
@@ -128,3 +121,14 @@ run = "move-node-to-workspace Code"
 [[on-window-detected]]
 if.app-id ='com.tidal.desktop'
 run = "move-node-to-workspace Media"
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = "move-node-to-workspace Slack"
+
+[workspace-to-monitor-force-assignment]
+Browser = 'main'
+Code = 'main'
+Media = 'main'
+Slack = 'built-in'
+Terminal = 'main'
