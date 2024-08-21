@@ -8,7 +8,7 @@ after-login-command = []
 # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
 after-startup-command = [
-    'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=7.0'
+    'exec-and-forget borders active_color=0xffff00ff inactive_color=0xff494d64 width=7.0'
 ]
 
 enable-normalization-flatten-containers = true
@@ -44,7 +44,7 @@ outer.top =        7
 [key-mapping.key-notation-to-key-code]
 Browser = 'b'
 Code = 'c'
-Extra = 'e'
+# Extra = 'e'
 Media = 'm'
 Office = 'o'
 Slack = 's'
@@ -60,7 +60,7 @@ alt-l = 'focus right'
 # Switch workspace
 ctrl-alt-b = 'workspace Browser'
 ctrl-alt-c = 'workspace Code'
-ctrl-alt-e = 'workspace Extra'
+# ctrl-alt-e = 'workspace Extra'
 ctrl-alt-m = 'workspace Media'
 ctrl-alt-o = 'workspace Office'
 ctrl-alt-s = 'workspace Slack'
@@ -73,13 +73,13 @@ ctrl-alt-k = 'move up'
 ctrl-alt-l = 'move right'
 
 # Move node to workspace
-ctrl-alt-shift-b = ['move-node-to-workspace Browser', 'workspace Browser']
-ctrl-alt-shift-c = ['move-node-to-workspace Code', 'workspace Code']
-ctrl-alt-shift-e = ['move-node-to-workspace Extra','workspace Extra']
-ctrl-alt-shift-m = ['move-node-to-workspace Media','workspace Media']
-ctrl-alt-shift-o = ['move-node-to-workspace Office','workspace Office']
-ctrl-alt-shift-s = ['move-node-to-workspace Slack', 'workspace Slack']
-ctrl-alt-shift-t = ['move-node-to-workspace Terminal','workspace Terminal']
+ctrl-alt-shift-b = 'move-node-to-workspace Browser' #['move-node-to-workspace Browser', 'workspace Browser']
+ctrl-alt-shift-c = 'move-node-to-workspace Code' #['move-node-to-workspace Code', 'workspace Code']
+# ctrl-alt-shift-e = 'move-node-to-workspace Extra' #['move-node-to-workspace Extra','workspace Extra']
+ctrl-alt-shift-m = 'move-node-to-workspace Media' #['move-node-to-workspace Media','workspace Media']
+ctrl-alt-shift-o = 'move-node-to-workspace Office' #['move-node-to-workspace Office','workspace Office']
+ctrl-alt-shift-s = 'move-node-to-workspace Slack' #['move-node-to-workspace Slack', 'workspace Slack']
+ctrl-alt-shift-t = 'move-node-to-workspace Terminal' #['move-node-to-workspace Terminal','workspace Terminal']
 
 # Resize
 ctrl-alt-shift-h = 'resize smart -100'
@@ -87,8 +87,8 @@ ctrl-alt-shift-j = 'resize smart -100'
 ctrl-alt-shift-k = 'resize smart +100'
 ctrl-alt-shift-l = 'resize smart +100'
 
-ctrl-alt-enter = 'fullscreen'
 ctrl-alt-comma = 'mode service'
+ctrl-alt-enter = 'fullscreen'
 ctrl-alt-space = 'workspace-back-and-forth'
 
 [mode.service.binding]
@@ -100,6 +100,7 @@ ctrl-alt-j = ['join-with down', 'mode main']
 ctrl-alt-k = ['join-with up', 'mode main']
 ctrl-alt-l = ['join-with right', 'mode main']
 
+# Auto assign app to workspace
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
 run = "move-node-to-workspace Terminal"
@@ -108,9 +109,9 @@ run = "move-node-to-workspace Terminal"
 if.app-id = 'com.electron.dockerdesktop'
 run = "move-node-to-workspace Terminal"
 
-# [[on-window-detected]]
-# if.app-id = 'com.google.Chrome'
-# run = "move-node-to-workspace Browser"
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = "move-node-to-workspace Browser"
 
 [[on-window-detected]]
 if.app-id ='com.microsoft.VSCode' 
@@ -118,6 +119,10 @@ run = "move-node-to-workspace Code"
 
 [[on-window-detected]]
 if.app-id ='com.tidal.desktop'
+run = "move-node-to-workspace Media"
+
+[[on-window-detected]]
+if.app-id ='com.spotify.client'
 run = "move-node-to-workspace Media"
 
 [[on-window-detected]]
@@ -131,6 +136,7 @@ run = "move-node-to-workspace Terminal"
 [workspace-to-monitor-force-assignment]
 Browser = 'main'
 Code = 'main'
+# Extra = "main'
 Media = 'main'
 Office = 'main'
 Slack = 'built-in'
