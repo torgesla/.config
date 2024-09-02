@@ -16,7 +16,7 @@ config.keys = {
 	{ key = "-", mods = "CMD", action = act.DecreaseFontSize },
 }
 config.window_padding = {
-	left = 2,
+	left = 0,
 	right = 0,
 	top = 2,
 	bottom = 0,

@@ -44,7 +44,6 @@ outer.top =        7
 [key-mapping.key-notation-to-key-code]
 Browser = 'b'
 Code = 'c'
-# Extra = 'e'
 Media = 'm'
 Office = 'o'
 Slack = 's'
@@ -60,7 +59,6 @@ alt-l = 'focus right'
 # Switch workspace
 ctrl-alt-b = 'workspace Browser'
 ctrl-alt-c = 'workspace Code'
-# ctrl-alt-e = 'workspace Extra'
 ctrl-alt-m = 'workspace Media'
 ctrl-alt-o = 'workspace Office'
 ctrl-alt-s = 'workspace Slack'
@@ -75,7 +73,6 @@ ctrl-alt-l = 'move right'
 # Move node to workspace
 ctrl-alt-shift-b = 'move-node-to-workspace Browser' #['move-node-to-workspace Browser', 'workspace Browser']
 ctrl-alt-shift-c = 'move-node-to-workspace Code' #['move-node-to-workspace Code', 'workspace Code']
-# ctrl-alt-shift-e = 'move-node-to-workspace Extra' #['move-node-to-workspace Extra','workspace Extra']
 ctrl-alt-shift-m = 'move-node-to-workspace Media' #['move-node-to-workspace Media','workspace Media']
 ctrl-alt-shift-o = 'move-node-to-workspace Office' #['move-node-to-workspace Office','workspace Office']
 ctrl-alt-shift-s = 'move-node-to-workspace Slack' #['move-node-to-workspace Slack', 'workspace Slack']
@@ -109,9 +106,9 @@ run = "move-node-to-workspace Terminal"
 if.app-id = 'com.electron.dockerdesktop'
 run = "move-node-to-workspace Terminal"
 
-[[on-window-detected]]
-if.app-id = 'com.google.Chrome'
-run = "move-node-to-workspace Browser"
+# [[on-window-detected]]
+# if.app-id = 'com.google.Chrome'
+# run = "move-node-to-workspace Browser"
 
 [[on-window-detected]]
 if.app-id ='com.microsoft.VSCode' 
@@ -136,7 +133,6 @@ run = "move-node-to-workspace Terminal"
 [workspace-to-monitor-force-assignment]
 Browser = 'main'
 Code = 'main'
-# Extra = "main'
 Media = 'main'
 Office = 'main'
 Slack = 'built-in'
