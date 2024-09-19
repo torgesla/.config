@@ -8,7 +8,7 @@ style = {shape = "Underline"}
 term = "xterm-256color"
 
 [font]
-size = 14
+size = 17
 bold = {family = "Hack Nerd Font", style = "Bold"}
 bold_italic = {family = "Hack Nerd Font", style = "BoldItalic"}
 italic = {family = "Hack Nerd Font", style = "Italic"}

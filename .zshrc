@@ -33,6 +33,7 @@ alias cp='cp -i'
 alias ln='ln -i'
 alias mv='mv -i'
 alias zshrc="nvim ~/.zshrc"
+alias config="nvim ~/.config/"
 
 # Source shell files
 for file in $HOME/.dotfiles/zsh/.{exports,functions,path,config,aliases}.zsh; do
@@ -62,8 +63,8 @@ export VOLTA_FEATURE_PNPM=1
 export PATH="$VOLTA_HOME/bin:$PATH"
 eval "$(zoxide init zsh)"
 
-if [ -z "$TMUX" ]; then
-    tmux 
-fi
+# if [ -z "$TMUX" ]; then
+#    tmux 
+# fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

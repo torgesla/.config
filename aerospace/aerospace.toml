@@ -1,5 +1,5 @@
 # Start AeroSpace at login
-start-at-login = false
+start-at-login = true
 
 # You can use it to add commands that run after login to macOS user session.
 # 'start-at-login' needs to be 'true' for 'after-login-command' to work
@@ -42,7 +42,7 @@ outer.right =      7
 outer.top =        7
 
 [key-mapping.key-notation-to-key-code]
-Browser = 'b'
+# Browser = 'b'
 Code = 'c'
 Media = 'm'
 Office = 'o'
@@ -51,13 +51,13 @@ Terminal = 't'
 
 [mode.main.binding]
 # Focus direction
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
+ctrl-alt-h = 'focus left'
+ctrl-alt-j = 'focus down'
+ctrl-alt-k = 'focus up'
+ctrl-alt-l = 'focus right'
 
 # Switch workspace
-ctrl-alt-b = 'workspace Browser'
+# ctrl-alt-b = 'workspace Browser'
 ctrl-alt-c = 'workspace Code'
 ctrl-alt-m = 'workspace Media'
 ctrl-alt-o = 'workspace Office'
@@ -65,13 +65,13 @@ ctrl-alt-s = 'workspace Slack'
 ctrl-alt-t = 'workspace Terminal'
 
 # Move window direction
-ctrl-alt-h = 'move left'
-ctrl-alt-j = 'move down'
-ctrl-alt-k = 'move up'
-ctrl-alt-l = 'move right'
+ctrl-alt-shift-h = 'move left'
+ctrl-alt-shift-j = 'move down'
+ctrl-alt-shift-k = 'move up'
+ctrl-alt-shift-l = 'move right'
 
 # Move node to workspace
-ctrl-alt-shift-b = 'move-node-to-workspace Browser' #['move-node-to-workspace Browser', 'workspace Browser']
+# ctrl-alt-shift-b = 'move-node-to-workspace Browser' #['move-node-to-workspace Browser', 'workspace Browser']
 ctrl-alt-shift-c = 'move-node-to-workspace Code' #['move-node-to-workspace Code', 'workspace Code']
 ctrl-alt-shift-m = 'move-node-to-workspace Media' #['move-node-to-workspace Media','workspace Media']
 ctrl-alt-shift-o = 'move-node-to-workspace Office' #['move-node-to-workspace Office','workspace Office']
@@ -79,10 +79,10 @@ ctrl-alt-shift-s = 'move-node-to-workspace Slack' #['move-node-to-workspace Slac
 ctrl-alt-shift-t = 'move-node-to-workspace Terminal' #['move-node-to-workspace Terminal','workspace Terminal']
 
 # Resize
-ctrl-alt-shift-h = 'resize smart -100'
-ctrl-alt-shift-j = 'resize smart -100'
-ctrl-alt-shift-k = 'resize smart +100'
-ctrl-alt-shift-l = 'resize smart +100'
+alt-h = 'resize width -100'
+alt-j = 'resize height -50'
+alt-k = 'resize height +50'
+alt-l = 'resize width +100'
 
 ctrl-alt-comma = 'mode service'
 ctrl-alt-enter = 'fullscreen'
@@ -131,7 +131,7 @@ if.app-id = 'com.tinyapp.TablePlus'
 run = "move-node-to-workspace Terminal"
 
 [workspace-to-monitor-force-assignment]
-Browser = 'main'
+# Browser = 'main'
 Code = 'main'
 Media = 'main'
 Office = 'main'
