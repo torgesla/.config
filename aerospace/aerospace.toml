@@ -46,6 +46,7 @@ outer.top =        7
 Code = 'c'
 Media = 'm'
 Office = 'o'
+Research = 'r'
 Slack = 's'
 Terminal = 't'
 
@@ -61,6 +62,7 @@ ctrl-alt-l = 'focus right'
 ctrl-alt-c = 'workspace Code'
 ctrl-alt-m = 'workspace Media'
 ctrl-alt-o = 'workspace Office'
+ctrl-alt-r = 'workspace Research'
 ctrl-alt-s = 'workspace Slack'
 ctrl-alt-t = 'workspace Terminal'
 
@@ -75,6 +77,7 @@ ctrl-alt-shift-l = 'move right'
 ctrl-alt-shift-c = 'move-node-to-workspace Code' #['move-node-to-workspace Code', 'workspace Code']
 ctrl-alt-shift-m = 'move-node-to-workspace Media' #['move-node-to-workspace Media','workspace Media']
 ctrl-alt-shift-o = 'move-node-to-workspace Office' #['move-node-to-workspace Office','workspace Office']
+ctrl-alt-shift-r = 'move-node-to-workspace Research' #['move-node-to-workspace Research','workspace Research']
 ctrl-alt-shift-s = 'move-node-to-workspace Slack' #['move-node-to-workspace Slack', 'workspace Slack']
 ctrl-alt-shift-t = 'move-node-to-workspace Terminal' #['move-node-to-workspace Terminal','workspace Terminal']
 
