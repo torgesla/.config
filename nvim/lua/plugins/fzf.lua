@@ -1,12 +1,26 @@
 return {
   'ibhagwan/fzf-lua',
-  -- optional for icon support
   dependencies = { 'nvim-tree/nvim-web-devicons' },
-  config = function()
-    require('fzf-lua').setup {}
-
-    vim.keymap.set('n', '<leader><leader>', ":lua require('fzf-lua').files()<cr>", { desc = 'Fzf Files' })
-    vim.keymap.set('n', '<leader>E', ":lua require('fzf-lua').grep_project()<cr>", { desc = 'Fzf search in project' })
-    vim.keymap.set('n', '<leader>w', ':w<cr>', { desc = 'Write buffer' })
-  end,
+  keys = {
+    {
+      '<leader><leader>',
+      function()
+        require('fzf-lua').files()
+      end,
+      desc = 'Fzf Files',
+    },
+    {
+      '<leader>e',
+      function()
+        require('fzf-lua').grep_project()
+      end,
+      desc = 'Fzf search in project',
+    },
+    {
+      '<leader>/',
+      function()
+        require('fzf-lua').blines()
+      end,
+    },
+  },
 }

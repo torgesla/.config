@@ -6,7 +6,7 @@ return {
   },
   keys = {
     {
-      '<leader>t',
+      '<leader>tt',
       function()
         require('toggleterm').toggle()
       end,

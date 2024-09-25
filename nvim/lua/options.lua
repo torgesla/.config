@@ -1,5 +1,5 @@
-vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.number = false
+vim.opt.relativenumber = false
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -7,9 +7,6 @@ vim.opt.mouse = 'a'
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 
--- Sync clipboard between OS and Neovim.
---  Schedule the setting after `UiEnter` because it can increase startup-time.
---  Remove this option if you want your OS clipboard to remain independent.
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
@@ -38,9 +35,8 @@ vim.opt.timeoutlen = 300
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
--- Sets how neovim will display certain whitespace characters in the editor.
---  See `:help 'list'`
---  and `:help 'listchars'`
+vim.opt.wrap = false
+
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
@@ -51,10 +47,11 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+
 vim.opt.termguicolors = true
 vim.opt.virtualedit = 'block'
 
--- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 999
 
 -- vim: ts=2 sts=2 sw=2 et
