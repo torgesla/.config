@@ -4,4 +4,13 @@ return {
   opts = {
     direction = 'float',
   },
+  keys = {
+    {
+      '<leader>t',
+      function()
+        require('toggleterm').toggle()
+      end,
+      desc = 'Floating terminal',
+    },
+  },
 }
