@@ -66,5 +66,5 @@ eval "$(zoxide init zsh)"
 # if [ -z "$TMUX" ]; then
 #    tmux 
 # fi
-
+source <(fzf --zsh)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

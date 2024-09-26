@@ -14,8 +14,8 @@ return {
         keymaps = {
           init_selection = '<leader>v',
           node_incremental = '<leader><TAB>',
-          scope_incremental = '<leader>sc',
           node_decremental = '<leader><S-TAB>',
+          scope_incremental = '<leader>sc',
         },
       },
       indent = { enable = true, disable = { 'ruby' } },

@@ -30,27 +30,39 @@ return {
 
           -- Jump to the definition of the word under your cursor.
           --  To jump back, press <C-t>.
-          map('gd', require('fzf-lua').lsp_definitions, '[G]oto [D]efinition')
+          map('gd', function()
+            require('fzf-lua').lsp_definitions { jump_to_single_result = true }
+          end, '[G]oto [D]efinition')
 
           -- Find references for the word under your cursor.
-          map('gr', require('fzf-lua').lsp_references, '[G]oto [R]eferences')
+          map('gr', function()
+            require('fzf-lua').lsp_references { jump_to_single_result = true }
+          end, '[G]oto [R]eferences')
 
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.
-          map('gI', require('fzf-lua').lsp_implementations, '[G]oto [I]mplementation')
+          map('gI', function()
+            require('fzf-lua').lsp_implementations { jump_to_single_result = true }
+          end, '[G]oto [I]mplementation')
 
           -- Jump to the type of the word under your cursor.
           --  Useful when you're not sure what type a variable is and you want to see
           --  the definition of its *type*, not where it was *defined*.
-          map('<leader>D', require('fzf-lua').lsp_typedefs, 'Type [D]efinition')
+          map('<leader>D', function()
+            require('fzf-lua').lsp_typedefs { jump_to_single_result = true }
+          end, 'Type [D]efinition')
 
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
-          map('<leader>ds', require('fzf-lua').lsp_document_symbols, '[D]ocument [S]ymbols')
+          map('<leader>ds', function()
+            require('fzf-lua').lsp_document_symbols { jump_to_single_result = true }
+          end, '[D]ocument [S]ymbols')
 
           -- Fuzzy find all the symbols in your current workspace.
           --  Similar to document symbols, except searches over your entire project.
-          map('<leader>ws', require('fzf-lua').lsp_workspace_symbols, '[W]orkspace [S]ymbols')
+          map('<leader>ws', function()
+            require('fzf-lua').lsp_workspace_symbols { jump_to_single_result = true }
+          end, '[W]orkspace [S]ymbols')
 
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
@@ -60,7 +72,9 @@ return {
           -- or a suggestion from your LSP for this to activate.
           map('<leader>ca', require('fzf-lua').lsp_code_actions, '[C]ode [A]ction', { 'n', 'x' })
 
-          map('gD', require('fzf-lua').lsp_declarations, '[G]oto [D]eclaration')
+          map('gD', function()
+            require('fzf-lua').lsp_declarations { jump_to_single_result = true }
+          end, '[G]oto [D]eclaration')
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
@@ -92,8 +106,6 @@ return {
 
           -- The following code creates a keymap to toggle inlay hints in your
           -- code, if the language server you are using supports them
-          --
-          -- This may be unwanted, since they displace some of your code
           if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
             map('<leader>th', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
@@ -106,11 +118,9 @@ return {
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
       local servers = {
-        ts_ls = {},
+        --ts_ls = {},
+        eslint = {},
         lua_ls = {
-          -- cmd = {...},
-          -- filetypes = { ...},
-          -- capabilities = {},
           settings = {
             Lua = {
               completion = {
