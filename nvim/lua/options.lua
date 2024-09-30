@@ -13,7 +13,6 @@ end)
 
 -- Enable break indent
 vim.opt.breakindent = true
-
 -- Save undo history
 vim.opt.undofile = true
 
@@ -51,7 +50,6 @@ vim.opt.shiftwidth = 4
 
 vim.opt.termguicolors = true
 vim.opt.virtualedit = 'block'
-
 vim.opt.scrolloff = 999
 
 -- vim: ts=2 sts=2 sw=2 et

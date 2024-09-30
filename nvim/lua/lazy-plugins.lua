@@ -1,4 +1,9 @@
 require('lazy').setup({
+  {
+    'vhyrro/luarocks.nvim',
+    priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
+    config = true,
+  },
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   { import = 'plugins' },
 }, {

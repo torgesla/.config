@@ -114,18 +114,23 @@ return {
         end,
       })
 
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
-
-      local servers = {
-        --ts_ls = {},
-        eslint = {},
-        lua_ls = {
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = 'Replace',
-              },
+      local servers = {}
+      servers.eslint = {}
+      servers.lua_ls = {
+        settings = {
+          Lua = {
+            completion = {
+              callSnippet = 'Replace',
+            },
+            diagnostics = {
+              globals = { 'vim', 'require' },
+            },
+            runtime = { version = 'LuaJIT' },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = { enable = false },
+            workspace = {
+              -- Make the server aware of Neovim runtime files
+              library = vim.api.nvim_get_runtime_file('', true),
             },
           },
         },
@@ -137,6 +142,8 @@ return {
       vim.list_extend(ensure_installed, { 'stylua' })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
       require('mason-lspconfig').setup {
         dependencies = { 'mason' },
         handlers = {

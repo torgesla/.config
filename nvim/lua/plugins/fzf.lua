@@ -2,7 +2,6 @@ return {
   'ibhagwan/fzf-lua',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   opts = {
-    jump_to_single_result = true,
     defaults = {
       git_icons = false,
       file_icons = false,
