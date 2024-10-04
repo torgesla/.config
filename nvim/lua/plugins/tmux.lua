@@ -1,6 +1,6 @@
 return {
   'aserowy/tmux.nvim',
-  enable = false,
+  enabled = false,
   config = function()
     -- return require('tmux').setup()
   end,

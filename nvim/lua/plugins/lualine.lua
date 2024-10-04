@@ -171,8 +171,8 @@ ins_right {
     end
     return msg
   end,
-  icon = ' LSP:',
-  color = { fg = '#ffffff', gui = 'bold' },
+  icon = ' :',
+  color = { fg = colors.white, gui = 'bold' },
 }
 
 ins_right {

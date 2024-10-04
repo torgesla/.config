@@ -114,6 +114,12 @@ return {
         end,
       })
 
+      -- EslintFixAll on save
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        pattern = { '*.js', '*.ts', '*.jsx', '*.tsx' },
+        command = 'EslintFixAll',
+      })
+
       local servers = {}
       servers.eslint = {}
       servers.lua_ls = {
@@ -129,7 +135,6 @@ return {
             -- Do not send telemetry data containing a randomized but unique identifier
             telemetry = { enable = false },
             workspace = {
-              -- Make the server aware of Neovim runtime files
               library = vim.api.nvim_get_runtime_file('', true),
             },
           },

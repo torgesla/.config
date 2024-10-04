@@ -15,9 +15,6 @@ return {
       },
     },
   },
-  config = function(_, opts)
-    require('fzf-lua').setup(opts)
-  end,
   keys = {
     {
       '<leader><leader>',
