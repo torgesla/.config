@@ -94,6 +94,8 @@ ctrl-alt-space = 'workspace-back-and-forth'
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
+f = ['layout floating tiling', 'mode main']
+a = ['layout accordion tiles', 'mode main']
 
 ctrl-alt-h = ['join-with left', 'mode main']
 ctrl-alt-j = ['join-with down', 'mode main']
@@ -138,5 +140,6 @@ run = "move-node-to-workspace Terminal"
 Code = 'main'
 Media = 'main'
 Office = 'main'
+Research = 'main'
 Slack = 'built-in'
 Terminal = 'main'

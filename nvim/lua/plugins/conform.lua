@@ -3,6 +3,7 @@ return {
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
     cmd = { 'ConformInfo' },
+    --[[
     keys = {
       {
         '<leader>f',
@@ -13,6 +14,8 @@ return {
         desc = '[F]ormat buffer',
       },
     },
+    ]]
+    --
     opts = {
       notify_on_error = false,
       format_on_save = function(bufnr)
@@ -32,6 +35,7 @@ return {
         -- You can use 'stop_after_first' to run the first available formatter from the list
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
         typescript = { 'prettierd', 'prettier', stop_after_first = true },
+        markdown = { 'markdownlint', stop_after_first = true },
       },
     },
   },

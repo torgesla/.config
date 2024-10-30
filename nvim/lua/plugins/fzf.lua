@@ -13,20 +13,41 @@ return {
         --preview_pager = 'delta --side-by-side --width=$FZF_PREVIEW_COLUMNS',
         preview_pager = "delta --side-by-side --width=$FZF_PREVIEW_COLUMNS --hunk-header-style='omit' --file-style='omit'",
       },
+      formatter = 'path.filename_first',
+      jump_to_single_result = true,
+    },
+    oldfiles = {
+      cwd_only = true,
+      formatter = 'path.filename_first',
+    },
+    files = {
+      formatter = 'path.filename_first',
     },
   },
+  cmd = { 'FzfLua' },
   keys = {
     {
       '<leader><leader>',
+      function()
+        require('fzf-lua').oldfiles {
+          cwd_only = function()
+            return vim.api.nvim_command 'pwd' ~= vim.env.HOME
+          end,
+        }
+      end,
+      desc = 'Fzf Recent Files',
+    },
+    {
+      '<leader>e',
       function()
         require('fzf-lua').files()
       end,
       desc = 'Fzf Files',
     },
     {
-      '<leader>e',
+      '<leader>f',
       function()
-        require('fzf-lua').live_grep_native()
+        require('fzf-lua').live_grep_native { resume = true }
       end,
       desc = 'Fzf search in project',
     },
