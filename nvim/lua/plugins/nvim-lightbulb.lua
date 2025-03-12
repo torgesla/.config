@@ -1,5 +1,4 @@
 return {
-
   -- VSCode 💡 for neovim's built-in LSP
   {
     'kosayoda/nvim-lightbulb',

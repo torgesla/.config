@@ -21,10 +21,10 @@ source $ZSH/oh-my-zsh.sh
 alias pn="pnpm"
 alias cat="bat"
 alias see='fzf --preview="bat --color=always {}"'
+alias explore="yazi"
 # alias v="nvim -c \"FzfLua oldfiles\""
 alias v="nvim"
 alias f="fzf"
-alias cdold="cd"
 alias cd="z"
 alias diff="colordiff"
 alias lg="lazygit"
@@ -100,6 +100,7 @@ alias stash="git stash --include-untracked"
 function ff() {
     aerospace list-windows --all --format '%{window-id}%{right-padding} | %{app-name}%{right-padding} | %{window-title}%{right-padding} | %{workspace}' | fzf --bind 'enter:execute(bash -c "aerospace focus --window-id {1}")+abort'
 }
+
 # Load plugins using Antibody
 source ~/.zsh_plugins.sh
 
@@ -122,10 +123,6 @@ export VOLTA_HOME="$HOME/.volta"
 export VOLTA_FEATURE_PNPM=1
 export PATH="$VOLTA_HOME/bin:$PATH"
 eval "$(zoxide init zsh)"
-
-# if [ -z "$TMUX" ]; then
-#    tmux 
-# fi
 
 source <(fzf --zsh)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

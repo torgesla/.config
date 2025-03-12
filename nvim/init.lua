@@ -10,10 +10,10 @@ if not vim.uv.fs_stat(lazypath) then
     error('Error cloning lazy.nvim:\n' .. out)
   end
 end ---@diagnostic disable-next-line: undefined-field
+
 vim.opt.rtp:prepend(lazypath)
 
 require 'options'
 require 'keymaps'
 require 'lazy-plugins'
-
--- vim: ts=2 sts=2 sw=2 et
+require 'neovide'
