@@ -1,6 +1,8 @@
 return {
   'ibhagwan/fzf-lua',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
+  enabled = false,
+  cmd = { 'FzfLua' },
   opts = {
     defaults = {
       git_icons = false,
@@ -10,7 +12,6 @@ return {
     lsp = {
       code_actions = {
         previewer = 'codeaction_native',
-        --preview_pager = 'delta --side-by-side --width=$FZF_PREVIEW_COLUMNS',
         preview_pager = "delta --side-by-side --width=$FZF_PREVIEW_COLUMNS --hunk-header-style='omit' --file-style='omit'",
       },
       formatter = 'path.filename_first',
@@ -24,7 +25,6 @@ return {
       formatter = 'path.filename_first',
     },
   },
-  cmd = { 'FzfLua' },
   keys = {
     {
       '<leader><leader>',

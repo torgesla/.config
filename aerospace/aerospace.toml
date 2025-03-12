@@ -46,11 +46,13 @@ outer.top =        7
 Code = 'c'
 Media = 'm'
 Office = 'o'
+Private = 'p'
 Research = 'r'
 Slack = 's'
 Terminal = 't'
 
 [mode.main.binding]
+
 # Focus direction
 ctrl-alt-h = 'focus left'
 ctrl-alt-j = 'focus down'
@@ -62,6 +64,7 @@ ctrl-alt-l = 'focus right'
 ctrl-alt-c = 'workspace Code'
 ctrl-alt-m = 'workspace Media'
 ctrl-alt-o = 'workspace Office'
+ctrl-alt-p = 'workspace Private'
 ctrl-alt-r = 'workspace Research'
 ctrl-alt-s = 'workspace Slack'
 ctrl-alt-t = 'workspace Terminal'
@@ -77,6 +80,7 @@ ctrl-alt-shift-l = 'move right'
 ctrl-alt-shift-c = 'move-node-to-workspace Code' #['move-node-to-workspace Code', 'workspace Code']
 ctrl-alt-shift-m = 'move-node-to-workspace Media' #['move-node-to-workspace Media','workspace Media']
 ctrl-alt-shift-o = 'move-node-to-workspace Office' #['move-node-to-workspace Office','workspace Office']
+ctrl-alt-shift-p = 'move-node-to-workspace Private' #['move-node-to-workspace Office','workspace Office']
 ctrl-alt-shift-r = 'move-node-to-workspace Research' #['move-node-to-workspace Research','workspace Research']
 ctrl-alt-shift-s = 'move-node-to-workspace Slack' #['move-node-to-workspace Slack', 'workspace Slack']
 ctrl-alt-shift-t = 'move-node-to-workspace Terminal' #['move-node-to-workspace Terminal','workspace Terminal']
@@ -96,6 +100,7 @@ esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
 f = ['layout floating tiling', 'mode main']
 a = ['layout accordion tiles', 'mode main']
+d = ['layout horizontal vertical', 'mode main']
 
 ctrl-alt-h = ['join-with left', 'mode main']
 ctrl-alt-j = ['join-with down', 'mode main']
@@ -140,6 +145,7 @@ run = "move-node-to-workspace Terminal"
 Code = 'main'
 Media = 'main'
 Office = 'main'
+Private = 'main'
 Research = 'main'
 Slack = 'built-in'
 Terminal = 'main'

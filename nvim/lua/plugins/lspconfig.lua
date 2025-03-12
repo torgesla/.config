@@ -31,37 +31,37 @@ return {
           -- Jump to the definition of the word under your cursor.
           --  To jump back, press <C-t>.
           map('gd', function()
-            require('fzf-lua').lsp_definitions { jump_to_single_result = true }
+            Snacks.picker.lsp_definitions()
           end, '[G]oto [D]efinition')
 
           -- Find references for the word under your cursor.
           map('gr', function()
-            require('fzf-lua').lsp_references { jump_to_single_result = true }
+            Snacks.picker.lsp_references { jump_to_single_result = true }
           end, '[G]oto [R]eferences')
 
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.
           map('gI', function()
-            require('fzf-lua').lsp_implementations { jump_to_single_result = true }
+            Snacks.picker.lsp_implementations { jump_to_single_result = true }
           end, '[G]oto [I]mplementation')
 
           -- Jump to the type of the word under your cursor.
           --  Useful when you're not sure what type a variable is and you want to see
           --  the definition of its *type*, not where it was *defined*.
           map('<leader>D', function()
-            require('fzf-lua').lsp_typedefs { jump_to_single_result = true }
+            Snacks.picker.lsp_typedefs { jump_to_single_result = true }
           end, 'Type [D]efinition')
 
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
           map('<leader>ds', function()
-            require('fzf-lua').lsp_document_symbols { jump_to_single_result = true }
+            Snacks.picker.lsp_document_symbols { jump_to_single_result = true }
           end, '[D]ocument [S]ymbols')
 
           -- Fuzzy find all the symbols in your current workspace.
           --  Similar to document symbols, except searches over your entire project.
           map('<leader>ws', function()
-            require('fzf-lua').lsp_workspace_symbols { jump_to_single_result = true }
+            Snacks.picker.lsp_workspace_symbols { jump_to_single_result = true }
           end, '[W]orkspace [S]ymbols')
 
           -- Rename the variable under your cursor.
@@ -70,10 +70,10 @@ return {
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
-          map('<leader>ca', require('fzf-lua').lsp_code_actions, '[C]ode [A]ction', { 'n', 'x' })
+          map('<leader>ca', Snacks.picker.lsp_code_actions, '[C]ode [A]ction', { 'n', 'x' })
 
           map('gD', function()
-            require('fzf-lua').lsp_declarations { jump_to_single_result = true }
+            Snacks.picker.lsp_declarations { jump_to_single_result = true }
           end, '[G]oto [D]eclaration')
 
           -- The following two autocommands are used to highlight references of the
