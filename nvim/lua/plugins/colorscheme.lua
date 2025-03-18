@@ -31,8 +31,8 @@ return {
   {
     'oxfist/night-owl.nvim',
     enabled = true,
-    lazy = false, 
-    priority = 1000, 
+    lazy = false,
+    priority = 1000,
     config = function()
       vim.cmd 'colorscheme night-owl'
     end,

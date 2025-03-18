@@ -1,4 +1,4 @@
--- This helps to determine if the system is setup correctly. 
+-- This helps to determine if the system is setup correctly.
 local check_version = function()
   local verstr = tostring(vim.version())
   if not vim.version.ge then
