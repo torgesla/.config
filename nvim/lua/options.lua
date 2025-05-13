@@ -62,3 +62,9 @@ vim.opt.isfname:append '@-@'
 vim.opt.backspace = { 'start', 'eol', 'indent' }
 
 vim.g.editorconfig = true
+-- vim.opt.guicursor = 'n-v-c:block-Cursor/lCursor'
+-- vim.cmd [[highlight Cursor guifg=NONE guibg=red]]
+-- vim.o.cursorline = true -- Ensure the cursorline is enabled
+-- vim.cmd [[
+--   highlight CursorLine guibg=#1e1e2e guifg=NONE
+-- ]]

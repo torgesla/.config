@@ -1,36 +1,18 @@
 return {
-  {
-    'rebelot/kanagawa.nvim',
-    enabled = false,
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd 'colorscheme kanagawa-wave'
-    end,
-  },
-  {
-    'catppuccin/nvim',
-    enabled = false,
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd 'colorscheme catppuccin-mocha'
-    end,
-  },
-  {
-    'folke/tokyonight.nvim',
-    enabled = false,
-    lazy = false,
-    priority = 1000,
-    init = function()
-      vim.cmd 'colorscheme tokyonight-night'
-      -- You can configure highlights by doing something like:
-      vim.cmd.hi 'Comment gui=none'
-    end,
-  },
+  { 'rebelot/kanagawa.nvim', name = 'kanagawa' },
+  { 'catppuccin/nvim', name = 'catppuccin' },
+  { 'folke/tokyonight.nvim', name = 'tokyonight' },
+  { 'ellisonleao/gruvbox.nvim', name = 'gruvbox' },
+  { 'rose-pine/neovim', name = 'rose-pine' },
+  { 'EdenEast/nightfox.nvim', name = 'nightfox' },
+  { 'navarasu/onedark.nvim', name = 'onedark' },
+  { 'Mofiqul/dracula.nvim', name = 'dracula' },
+  { 'craftzdog/solarized-osaka.nvim', name = 'solarized-osaka' },
+  { 'marko-cerovac/material.nvim', name = 'material' },
+  { 'maxmx03/solarized.nvim', name = 'solarized' },
+  --  { 'Tsuzat/NeoSolarized.nvim', name = 'neo-solarized', opts = { style = 'dark', transparent = false } },
   {
     'oxfist/night-owl.nvim',
-    enabled = true,
     lazy = false,
     priority = 1000,
     config = function()

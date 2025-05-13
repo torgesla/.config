@@ -6,7 +6,6 @@ return {
   {
     'saghen/blink.cmp',
     dependencies = 'rafamadriz/friendly-snippets',
-
     version = '*',
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
@@ -45,6 +44,7 @@ return {
         },
       },
       fuzzy = { implementation = 'prefer_rust_with_warning' },
+      signature = { enabled = true },
       sources = {
         default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
         providers = {
@@ -56,7 +56,6 @@ return {
           },
         },
       },
-      signature = { enabled = true },
     },
   },
 }

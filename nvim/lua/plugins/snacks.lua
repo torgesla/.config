@@ -125,6 +125,13 @@ return {
       desc = 'Find file',
     },
     {
+      '<leader>cs',
+      function()
+        require('snacks').picker.colorschemes()
+      end,
+      desc = 'Colorschemes',
+    },
+    {
       '<leader>ff',
       function()
         require('snacks').picker.smart()
