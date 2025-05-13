@@ -6,6 +6,14 @@ return {
     enabled = true,
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     event = { 'VimEnter */*,.*', 'BufNew */*,.*' },
+    opts = {
+      default_file_explorer = true,
+      delete_to_trash = true,
+      skip_confirm_for_simple_edits = true,
+      view_options = {
+        show_hidden = true,
+      },
+    },
     keys = {
       {
         '-',
@@ -20,13 +28,6 @@ return {
           require('oil').open_float()
         end,
         desc = 'Open parent directory in floating window',
-      },
-    },
-    opts = {
-      delete_to_trash = true,
-      skip_confirm_for_simple_edits = true,
-      view_options = {
-        show_hidden = true,
       },
     },
   },

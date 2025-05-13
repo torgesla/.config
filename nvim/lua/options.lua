@@ -1,4 +1,4 @@
-vim.opt.number = false
+vim.opt.number = true
 vim.opt.relativenumber = false
 
 -- Enable mouse mode, can be useful for resizing splits for example!
@@ -51,11 +51,14 @@ vim.opt.shiftwidth = 4
 
 vim.opt.termguicolors = true
 vim.opt.virtualedit = 'block'
-vim.opt.scrolloff = 999
+vim.opt.scrolloff = 8
 
 vim.diagnostic.config {
   virtual_text = false,
-  virtual_lines = false,
+  virtual_lines = true,
 }
 
--- vim: ts=2 sts=2 sw=2 et
+vim.opt.isfname:append '@-@'
+vim.opt.backspace = { 'start', 'eol', 'indent' }
+
+vim.g.editorconfig = true

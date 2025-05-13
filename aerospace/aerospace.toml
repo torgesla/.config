@@ -8,7 +8,7 @@ after-login-command = []
 # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
 after-startup-command = [
-    'exec-and-forget borders active_color=0xffff00ff inactive_color=0xff494d64 width=7.0'
+    'exec-and-forget borders active_color=0xffffffff inactive_color=0xff494d64 width=12.0'
 ]
 
 enable-normalization-flatten-containers = true
@@ -36,10 +36,10 @@ on-focus-changed = "move-mouse window-lazy-center"
 inner.horizontal = 5
 inner.vertical =   5
 
-outer.bottom =     7    
-outer.left =       7
-outer.right =      7
-outer.top =        7
+outer.bottom =     12    
+outer.left =       12
+outer.right =      12
+outer.top =        12
 
 [key-mapping.key-notation-to-key-code]
 # Browser = 'b'

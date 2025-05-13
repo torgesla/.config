@@ -1,6 +1,7 @@
 return {
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
+    version = false,
     config = function()
       -- Better Around/Inside textobjects
       --  - va)  - [V]isually select [A]round [)]paren
@@ -15,4 +16,3 @@ return {
     end,
   },
 }
--- vim: ts=2 sts=2 sw=2 et

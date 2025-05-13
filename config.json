@@ -1,0 +1,103 @@
+{
+  "actions" : [
+    {
+      "key" : "b",
+      "label" : "Browser",
+      "type" : "application",
+      "value" : "/Applications/Google Chrome.app"
+    },
+    {
+      "key" : "c",
+      "label" : "Code",
+      "type" : "application",
+      "value" : "/Applications/Visual Studio Code.app"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "c",
+          "label" : "Google Calendar",
+          "type" : "url",
+          "value" : "https://calendar.google.com/calendar/u/0/r"
+        },
+        {
+          "key" : "h",
+          "label" : "GitHub",
+          "type" : "url",
+          "value" : "https://github.com/nettbureau/web-apps"
+        },
+        {
+          "key" : "m",
+          "label" : "Google Meet",
+          "type" : "url",
+          "value" : "https://meet.google.com/"
+        },
+        {
+          "key" : "d",
+          "label" : "Google Drive",
+          "type" : "url",
+          "value" : "https://drive.google.com/drive/u/0/folders/15yIwsTwVhO0pp3Mx1IBBYWd8nU-HpuVu"
+        }
+      ],
+      "key" : "g",
+      "label" : "",
+      "type" : "group"
+    },
+    {
+      "key" : "s",
+      "label" : "Slack",
+      "type" : "application",
+      "value" : "/Applications/Slack.app"
+    },
+    {
+      "key" : "t",
+      "label" : "Terminal",
+      "type" : "application",
+      "value" : "/Applications/Ghostty.app"
+    },
+    {
+      "key" : "r",
+      "label" : "",
+      "type" : "application",
+      "value" : "/Applications/Raycast.app"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "b",
+          "label" : "Leadbox",
+          "type" : "url",
+          "value" : "https://leadbox.nettbureau.com/leads"
+        },
+        {
+          "key" : "k",
+          "label" : "Leadkit",
+          "type" : "url",
+          "value" : "https://leadkit.nettbureau.com/sites"
+        }
+      ],
+      "key" : "l",
+      "label" : "",
+      "type" : "group"
+    },
+    {
+      "key" : "y",
+      "label" : "",
+      "type" : "url",
+      "value" : "https://www.youtube.com/"
+    },
+    {
+      "key" : ",",
+      "label" : "",
+      "type" : "application",
+      "value" : "/System/Applications/System Settings.app"
+    },
+    {
+      "key" : "n",
+      "label" : "",
+      "type" : "application",
+      "value" : "/Applications/Neovide.app"
+    }
+  ],
+  "type" : "group"
+}
