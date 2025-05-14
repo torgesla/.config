@@ -6,9 +6,9 @@ clipboard-read = allow
 clipboard-write = allow
 copy-on-select = true
 cursor-text = #cdd6f4
-font-family = "Hack Nerd Font"
+font-family = "FiraCode Nerd Font Mono"
 font-size = 17
-font-style = medium
+font-style = retina
 font-thicken = true
 fullscreen = true
 mouse-hide-while-typing = true
@@ -20,4 +20,3 @@ theme = catppuccin-mocha
 window-colorspace = display-p3
 window-decoration = false
 cursor-invert-fg-bg = true
-keybind = global:ctrl+alt+shift+space=toggle_quick_terminal 
