@@ -223,13 +223,13 @@ return {
       end,
       desc = 'LSP Workspace Symbols',
     },
-    {
-      '<leader>ca',
-      function()
-        vim.lsp.buf.code_action()
-      end,
-      desc = 'LSP Code Actions',
-    },
+    -- {
+    --   '<leader>ca',
+    --   function()
+    --     vim.lsp.buf.code_action()
+    --   end,
+    --   desc = 'LSP Code Actions',
+    -- },
     {
       '<leader>km',
       function()

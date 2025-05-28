@@ -5,6 +5,7 @@ kmap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 kmap.set('n', '<leader>sv', '<cmd>source $MYVIMRC<CR>', { desc = 'Source VIM config' })
 
 kmap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+kmap.set('n', 'c', '"_c', { desc = 'Change operation without overwriting clipboard' })
 
 -- Keybinds to make split navigation easier.
 kmap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })

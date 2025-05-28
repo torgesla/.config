@@ -4,15 +4,28 @@ return {
     opts = {},
   },
   {
+    'zbirenbaum/copilot.lua',
+    cmd = 'Copilot',
+    event = 'InsertEnter',
+    opt = {},
+    -- config = function()
+    --   require('copilot').setup {}
+    -- end,
+  },
+  {
     'saghen/blink.cmp',
-    dependencies = 'rafamadriz/friendly-snippets',
+    dependencies = {
+      'rafamadriz/friendly-snippets',
+      'giuxtaposition/blink-cmp-copilot',
+    },
     version = '*',
+
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
       keymap = { preset = 'default' },
       appearance = {
-        use_nvim_cmp_as_default = false,
+        use_nvim_cmp_as_default = true,
         nerd_font_variant = 'mono',
       },
       cmdline = {
@@ -24,7 +37,7 @@ return {
       },
       completion = {
         accept = { auto_brackets = { enabled = true } },
-        documentation = { auto_show = true, auto_show_delay_ms = 100 },
+        documentation = { auto_show = true, auto_show_delay_ms = 300 },
         keyword = { range = 'full' },
         menu = {
           auto_show = true,
@@ -46,13 +59,18 @@ return {
       fuzzy = { implementation = 'prefer_rust_with_warning' },
       signature = { enabled = true },
       sources = {
-        default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+        default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
         providers = {
           lazydev = {
             name = 'LazyDev',
             module = 'lazydev.integrations.blink',
-            -- make lazydev completions top priority (see `:h blink.cmp`)
             score_offset = 100,
+          },
+          copilot = {
+            name = 'copilot',
+            module = 'blink-cmp-copilot',
+            score_offset = 100,
+            async = true,
           },
         },
       },

@@ -55,13 +55,14 @@ vim.opt.scrolloff = 8
 
 vim.diagnostic.config {
   virtual_text = false,
-  virtual_lines = true,
+  virtual_lines = false,
 }
 
 vim.opt.isfname:append '@-@'
 vim.opt.backspace = { 'start', 'eol', 'indent' }
 
 vim.g.editorconfig = true
+
 -- vim.opt.guicursor = 'n-v-c:block-Cursor/lCursor'
 -- vim.cmd [[highlight Cursor guifg=NONE guibg=red]]
 -- vim.o.cursorline = true -- Ensure the cursorline is enabled

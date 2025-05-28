@@ -7,11 +7,7 @@ return {
       {
         'folke/lazydev.nvim',
         ft = 'lua',
-        opts = {
-          library = {
-            { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
-          },
-        },
+        opts = { library = { { path = '${3rd}/luv/library', words = { 'vim%.uv' } } } },
       },
     },
     config = function(_, opts)
@@ -22,13 +18,51 @@ return {
       end
       -- EslintFixAll on save
       vim.api.nvim_create_autocmd('BufWritePre', {
-        pattern = { '*.js', '*.ts', '*.jsx', '*.tsx' },
+        -- pattern = { '*.js', '*.ts', '*.jsx', '*.tsx' },
+        pattern = { '*.ts', '*.tsx' },
         command = 'EslintFixAll',
       })
     end,
     opts = {
       servers = {
-        eslint = {},
+        -- eslint = {},
+        -- vtsls = {
+        --   filetypes = {
+        --     'javascript',
+        --     'javascriptreact',
+        --     'javascript.jsx',
+        --     'typescript',
+        --     'typescriptreact',
+        --     'typescript.tsx',
+        --   },
+        --   settings = {
+        --     complete_function_calls = true,
+        --     vtsls = {
+        --       enableMoveToFileCodeAction = true,
+        --       autoUseWorkspaceTsdk = true,
+        --       experimental = {
+        --         maxInlayHintLength = 30,
+        --         completion = {
+        --           enableServerSideFuzzyMatch = true,
+        --         },
+        --       },
+        --     },
+        --     typescript = {
+        --       updateImportsOnFileMove = { enabled = 'always' },
+        --       suggest = {
+        --         completeFunctionCalls = true,
+        --       },
+        --       inlayHints = {
+        --         enumMemberValues = { enabled = true },
+        --         functionLikeReturnTypes = { enabled = true },
+        --         parameterNames = { enabled = 'literals' },
+        --         parameterTypes = { enabled = true },
+        --         propertyDeclarationTypes = { enabled = true },
+        --         variableTypes = { enabled = false },
+        --       },
+        --     },
+        --   },
+        -- },
         lua_ls = {
           settings = {
             Lua = {
