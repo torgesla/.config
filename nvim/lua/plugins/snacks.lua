@@ -13,9 +13,13 @@ return {
     lazygit = { enabled = true },
     picker = {
       enabled = true,
-      matchers = {
-        frecency = true,
+      matcher = {
         cwd_bonus = true,
+        history_bonus = true,
+        filename_bonus = true,
+        frecency = false,
+        fuzzy = true,
+        smartcase = true,
       },
       formatters = {
         file = {
@@ -30,57 +34,18 @@ return {
           preview = 'main',
           layout = {
             backdrop = false,
-            width = 0.6,
-            min_width = 80,
             height = 0.4,
             min_height = 10,
+            width = 0.6,
+            min_width = 80,
             box = 'vertical',
             border = 'rounded',
+            position = 'top',
             title = '{title}',
             title_pos = 'center',
             { win = 'input', height = 1, border = 'bottom' },
             { win = 'list', border = 'none' },
             { win = 'preview', title = '{preview}', width = 0.6, height = 0.4, border = 'top' },
-          },
-        },
-        telescope = {
-          reverse = false, -- set to false for search bar to be on top
-          layout = {
-            box = 'horizontal',
-            backdrop = false,
-            width = 0.8,
-            height = 0.9,
-            border = 'none',
-            {
-              box = 'vertical',
-              { win = 'list', title = ' Results ', title_pos = 'center', border = 'rounded' },
-              { win = 'input', height = 1, border = 'rounded', title = '{title} {live} {flags}', title_pos = 'center' },
-            },
-            {
-              win = 'preview',
-              title = '{preview:Preview}',
-              width = 0.50,
-              border = 'rounded',
-              title_pos = 'center',
-            },
-          },
-        },
-        ivy = {
-          layout = {
-            box = 'vertical',
-            backdrop = false,
-            width = 0,
-            height = 0.4,
-            position = 'bottom',
-            border = 'top',
-            title = ' {title} {live} {flags}',
-            title_pos = 'left',
-            { win = 'input', height = 1, border = 'bottom' },
-            {
-              box = 'horizontal',
-              { win = 'list', border = 'none' },
-              { win = 'preview', title = '{preview}', width = 0.5, border = 'left' },
-            },
           },
         },
       },
@@ -110,19 +75,36 @@ return {
       end,
       desc = 'Fast Rename Current File',
     },
-    {
-      '<leader>dB',
-      function()
-        require('snacks').bufdelete()
-      end,
-      desc = 'Delete or Close Buffer  (Confirm)',
-    },
+    -- {
+    --   '<leader>dB',
+    --   function()
+    --     require('snacks').bufdelete()
+    --   end,
+    --   desc = 'Delete or Close Buffer  (Confirm)',
+    -- },
     {
       '<leader><leader>',
       function()
-        require('snacks').picker.smart()
+        require('snacks').picker.buffers {
+          current = false,
+          on_show = function()
+            vim.cmd.stopinsert()
+          end,
+          win = {
+            input = {
+              keys = {
+                ['d'] = 'bufdelete',
+              },
+            },
+            list = {
+              keys = {
+                ['d'] = 'bufdelete',
+              },
+            },
+          },
+        }
       end,
-      desc = 'Find file',
+      desc = 'Find buffers',
     },
     {
       '<leader>cs',
@@ -132,11 +114,11 @@ return {
       desc = 'Colorschemes',
     },
     {
-      '<leader>ff',
+      '<leader>e',
       function()
         require('snacks').picker.smart()
       end,
-      desc = 'Find file',
+      desc = 'Find smart file',
     },
     {
       '<leader>:',

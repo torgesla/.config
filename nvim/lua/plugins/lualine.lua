@@ -28,8 +28,10 @@ local conditions = {
 }
 
 -- Config
+---@type snacks.Config
 local config = {
   options = {
+    always_show_tabline = false,
     component_separators = '',
     section_separators = '',
     theme = {
@@ -56,6 +58,14 @@ local config = {
     lualine_c = {},
     lualine_x = {},
   },
+  -- tabline = {
+  --   lualine_a = { 'buffers' },
+  --   lualine_b = { 'branch' },
+  --   lualine_c = { 'filename' },
+  --   lualine_y = {},
+  --   lualine_z = {},
+  --   lualine_x = {},
+  -- },
 }
 
 -- Inserts a component in lualine_c at left section

@@ -6,14 +6,14 @@ return {
     optional = true,
     keys = {
       {
-        '<leader>st',
+        '<leader>td',
         function()
           require('snacks').picker.todo_comments()
         end,
         desc = 'Todo',
       },
       {
-        '<leader>sT',
+        '<leader>tD',
         function()
           require('snacks').picker.todo_comments { keywords = { 'TODO', 'FIX', 'FIXME' } }
         end,
