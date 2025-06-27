@@ -31,14 +31,13 @@ vim.opt.updatetime = 250
 -- Displays which-key popup sooner
 vim.opt.timeoutlen = 300
 
--- Configure how new splits should be opened
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-
-vim.opt.wrap = false
-
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+-- Configure how new splits should be opened
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.wrap = false
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -54,8 +53,8 @@ vim.opt.virtualedit = 'block'
 vim.opt.scrolloff = 8
 
 vim.diagnostic.config {
-  virtual_text = false,
   virtual_lines = false,
+  virtual_text = false,
 }
 
 vim.opt.isfname:append '@-@'

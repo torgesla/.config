@@ -85,24 +85,17 @@ return {
     {
       '<leader><leader>',
       function()
-        require('snacks').picker.buffers {
-          current = false,
-          on_show = function()
-            vim.cmd.stopinsert()
-          end,
-          win = {
-            input = {
-              keys = {
-                ['d'] = 'bufdelete',
-              },
-            },
-            list = {
-              keys = {
-                ['d'] = 'bufdelete',
-              },
-            },
-          },
-        }
+        local buffers = vim.fn.getbufinfo { buflisted = 1 }
+        if #buffers <= 1 then
+          require('snacks.picker').smart()
+        else
+          require('snacks.picker').buffers {
+            current = false,
+            on_show = function()
+              vim.cmd.stopinsert()
+            end,
+          }
+        end
       end,
       desc = 'Find buffers',
     },

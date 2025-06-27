@@ -18,10 +18,10 @@ return {
       incremental_selection = {
         enable = true,
         keymaps = {
-          init_selection = '<leader>v',
-          node_incremental = '<leader><TAB>',
-          node_decremental = '<leader><S-TAB>',
-          scope_incremental = '<leader>sc',
+          init_selection = '<Enter>',
+          node_incremental = '<Enter>',
+          node_decremental = '<Backspace>',
+          scope_incremental = false,
         },
       },
       indent = { enable = true, disable = { 'ruby' } },

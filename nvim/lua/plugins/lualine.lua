@@ -28,7 +28,6 @@ local conditions = {
 }
 
 -- Config
----@type snacks.Config
 local config = {
   options = {
     always_show_tabline = false,
@@ -58,14 +57,6 @@ local config = {
     lualine_c = {},
     lualine_x = {},
   },
-  -- tabline = {
-  --   lualine_a = { 'buffers' },
-  --   lualine_b = { 'branch' },
-  --   lualine_c = { 'filename' },
-  --   lualine_y = {},
-  --   lualine_z = {},
-  --   lualine_x = {},
-  -- },
 }
 
 -- Inserts a component in lualine_c at left section
@@ -195,10 +186,15 @@ ins_right {
   padding = { left = 1 },
 }
 
--- Now don't forget to initialize lualine
 return {
-  'nvim-lualine/lualine.nvim',
-  config = function()
-    require('lualine').setup(config)
-  end,
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    -- enabled = false,
+    config = function()
+      require('lualine').setup(config)
+    end,
+  },
 }

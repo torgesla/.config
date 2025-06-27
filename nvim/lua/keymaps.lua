@@ -45,6 +45,8 @@ kmap.set('n', '<leader>sx', '<cmd>close<CR>', { desc = 'Close current split' })
 kmap.set('n', 'Q', '<nop>')
 kmap.set('n', 'U', '<nop>')
 
+kmap.set('v', 'gs', "<cmd>'<,'>%sort<CR>")
+
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
