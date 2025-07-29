@@ -19,8 +19,8 @@ kmap.set('n', '<C-u>', '<C-u>zz')
 kmap.set('n', '<C-f>', '<C-f>zz')
 kmap.set('n', '<C-b>', '<C-b>zz')
 
-kmap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Moves lines down in visual mode' })
-kmap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Moves lines up in visual mode' })
+-- kmap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Moves lines down in visual mode' })
+-- kmap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Moves lines up in visual mode' })
 
 kmap.set('n', '<C-d>', '<C-d>zz', { desc = 'Move down in buffer with cursor centered' })
 kmap.set('n', '<C-u>', '<C-u>zz', { desc = 'Move up in buffer with cursor centered' })

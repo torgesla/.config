@@ -6,10 +6,14 @@ return {
     opts = {
       notify_on_error = false,
       formatters_by_ft = {
+        javascript = { 'prettierd', 'prettier' },
+        javascriptreact = { 'prettierd', 'prettier' },
         lua = { 'stylua' },
-        javascript = { 'prettierd', 'prettier', stop_after_first = true },
-        typescript = { 'prettierd', 'prettier', stop_after_first = true },
-        markdown = { 'markdownlint', stop_after_first = true },
+        markdown = { 'markdownlint-cli2', 'prettierd', 'prettier' },
+        typescript = { 'prettierd', 'prettier' },
+        typescriptreact = { 'prettierd', 'prettier' },
+
+        ['*'] = { 'prettierd', 'prettier' },
       },
       format_on_save = {
         lsp_fallback = 'fallback',

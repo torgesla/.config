@@ -5,6 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+# antidote load
+# antidote bundle <~/.zsh_plugins.txt >~/.zsh_plugins.zsh
+
 export EDITOR="nvim"
 export MANPAGER='nvim +Man!'
 export ZSH="$HOME/.oh-my-zsh"
@@ -14,8 +18,9 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
   git
   npm
-  zsh-autosuggestions
-  zsh-syntax-highlighting
+  # I initalise zsh-autosuggestions and zsh-syntax-highlighting manually later as they are installed by brew.
+  # zsh-autosuggestions
+  # zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -103,9 +108,6 @@ function ff() {
     aerospace list-windows --all --format '%{window-id}%{right-padding} | %{app-name}%{right-padding} | %{window-title}%{right-padding} | %{workspace}' | fzf --bind 'enter:execute(bash -c "aerospace focus --window-id {1}")+abort'
 }
 
-# Load plugins using Antibody
-source ~/.zsh_plugins.sh
-
 # Bootstrap Oh My Zsh
 source $ZSH/oh-my-zsh.sh
 
@@ -139,3 +141,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
