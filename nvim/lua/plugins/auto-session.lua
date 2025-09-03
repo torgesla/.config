@@ -1,3 +1,5 @@
+---@module 'lazy.core.spec'
+---@type LazySpec[]
 return {
   {
     'rmagatti/auto-session',

@@ -1,3 +1,5 @@
+---@module 'lazy.core.spec'
+---@type LazySpec[]
 return {
   {
     'pmizio/typescript-tools.nvim',

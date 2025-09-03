@@ -1,15 +1,18 @@
+---@module 'lazy.core.spec'
+---@type LazySpec[]
 return {
-  { 'Bilal2453/luvit-meta', lazy = true },
+  {
+    'Bilal2453/luvit-meta',
+    lazy = true,
+  },
+  {
+    'folke/lazydev.nvim',
+    ft = 'lua',
+    opts = { library = { { path = '${3rd}/luv/library', words = { 'vim%.uv' } } } },
+  },
   {
     'neovim/nvim-lspconfig',
-    dependencies = {
-      'saghen/blink.cmp',
-      {
-        'folke/lazydev.nvim',
-        ft = 'lua',
-        opts = { library = { { path = '${3rd}/luv/library', words = { 'vim%.uv' } } } },
-      },
-    },
+    dependencies = { 'saghen/blink.cmp', 'folke/lazydev.nvim' },
     config = function(_, opts)
       local lspconfig = require 'lspconfig'
       for server, config in pairs(opts.servers) do
@@ -17,11 +20,11 @@ return {
         lspconfig[server].setup(config)
       end
       -- EslintFixAll on save
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        -- pattern = { '*.js', '*.ts', '*.jsx', '*.tsx' },
-        pattern = { '*.ts', '*.tsx' },
-        command = 'EslintFixAll',
-      })
+      -- vim.api.nvim_create_autocmd('BufWritePre', {
+      --   -- pattern = { '*.js', '*.ts', '*.jsx', '*.tsx' },
+      --   pattern = { '*.ts', '*.tsx' },
+      --   command = 'EslintFixAll',
+      -- })
     end,
     opts = {
       servers = {
@@ -74,6 +77,8 @@ return {
             },
           },
         },
+        pyright = {},
+        tailwindcss = {},
       },
     },
   },

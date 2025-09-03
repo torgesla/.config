@@ -1,3 +1,5 @@
+---@module 'lazy.core.spec'
+---@type LazySpec[]
 return {
   {
     'kristijanhusak/vim-dadbod-ui',

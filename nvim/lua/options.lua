@@ -1,6 +1,10 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+vim.opt.iskeyword:append '-'
+vim.opt.path:append '**'
+vim.opt.spelllang = 'en_us,nb_no'
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
 

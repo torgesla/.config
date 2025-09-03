@@ -1,6 +1,9 @@
+---@module 'lazy.core.spec'
+---@type LazySpec[]
 return {
   {
     'rachartier/tiny-code-action.nvim',
+    enabled = false,
     dependencies = {
       { 'nvim-lua/plenary.nvim' },
       { 'folke/snacks.nvim', opts = { terminal = {} } },

@@ -3,6 +3,7 @@ return {
   {
     'kosayoda/nvim-lightbulb',
     event = { 'BufReadPre', 'BufNewFile' },
+    enabled = false,
     opts = {
       ignore = {
         clients = { 'null-ls' },

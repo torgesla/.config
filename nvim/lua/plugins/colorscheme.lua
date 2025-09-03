@@ -4,6 +4,8 @@ local function enable_transparency()
   vim.api.nvim_set_hl(0, 'LineNr', { bg = 'none' })
 end
 
+---@module 'lazy.core.spec'
+---@type LazySpec[]
 return {
   { 'EdenEast/nightfox.nvim' },
   { 'Mofiqul/dracula.nvim' },

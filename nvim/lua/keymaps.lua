@@ -1,6 +1,7 @@
 local kmap = vim.keymap
 
 kmap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
 --kmap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 kmap.set('n', '<leader>sv', '<cmd>source $MYVIMRC<CR>', { desc = 'Source VIM config' })
 kmap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'Source VIM config' })

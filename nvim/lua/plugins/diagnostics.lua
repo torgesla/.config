@@ -35,6 +35,9 @@
 --     },
 --   },
 -- }
+
+---@module 'lazy.core.spec'
+---@type LazySpec[]
 return {
   {
     'folke/trouble.nvim',
@@ -67,11 +70,11 @@ return {
       --   '<cmd>Trouble symbols toggle focus=false<cr>',
       --   desc = 'Symbols (Trouble)',
       -- },
-      {
-        '<leader>cl',
-        '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
-        desc = 'LSP Definitions / references / ... (Trouble)',
-      },
+      -- {
+      --   '<leader>cl',
+      --   '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
+      --   desc = 'LSP Definitions / references / ... (Trouble)',
+      -- },
       {
         '<leader>xL',
         '<cmd>Trouble loclist toggle<cr>',

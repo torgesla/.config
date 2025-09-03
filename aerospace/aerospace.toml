@@ -58,7 +58,10 @@ ctrl-alt-h = 'focus left'
 ctrl-alt-j = 'focus down'
 ctrl-alt-k = 'focus up'
 ctrl-alt-l = 'focus right'
-
+ctrl-alt-left = 'focus left'
+ctrl-alt-down = 'focus down'
+ctrl-alt-up = 'focus up'
+ctrl-alt-right = 'focus right'
 # Switch workspace
 # ctrl-alt-b = 'workspace Browser'
 ctrl-alt-c = 'workspace Code'
@@ -74,6 +77,10 @@ ctrl-alt-shift-h = 'move left'
 ctrl-alt-shift-j = 'move down'
 ctrl-alt-shift-k = 'move up'
 ctrl-alt-shift-l = 'move right'
+ctrl-alt-shift-left = 'move left'
+ctrl-alt-shift-down = 'move down'
+ctrl-alt-shift-up = 'move up'
+ctrl-alt-shift-right = 'move right'
 
 # Move node to workspace
 # ctrl-alt-shift-b = 'move-node-to-workspace Browser' #['move-node-to-workspace Browser', 'workspace Browser']
@@ -106,19 +113,16 @@ ctrl-alt-h = ['join-with left', 'mode main']
 ctrl-alt-j = ['join-with down', 'mode main']
 ctrl-alt-k = ['join-with up', 'mode main']
 ctrl-alt-l = ['join-with right', 'mode main']
-ctrl-alt-m = 'move-workspace-to-monitor --wrap-around next'
-# Auto assign app to workspace
-[[on-window-detected]]
-if.app-id = 'com.github.wez.wezterm'
-run = "move-node-to-workspace Terminal"
+ctrl-alt-left = ['join-with left', 'mode main']
+ctrl-alt-down = ['join-with down', 'mode main']
+ctrl-alt-up = ['join-with up', 'mode main']
+ctrl-alt-right = ['join-with right', 'mode main']
+ctrl-alt-m = ['move-workspace-to-monitor --wrap-around next', 'mode main']
 
+# Auto assign app to workspace
 [[on-window-detected]]
 if.app-id = 'com.electron.dockerdesktop'
 run = "move-node-to-workspace Terminal"
-
-# [[on-window-detected]]
-# if.app-id = 'com.google.Chrome'
-# run = "move-node-to-workspace Browser"
 
 [[on-window-detected]]
 if.app-id ='com.microsoft.VSCode' 
@@ -141,11 +145,5 @@ if.app-id = 'com.tinyapp.TablePlus'
 run = "move-node-to-workspace Terminal"
 
 [workspace-to-monitor-force-assignment]
-# Browser = 'main'
 Code = 'main'
 Media = 'main'
-# Office = 'main'
-# Private = 'main'
-# Research = 'main'
-# Slack = 'built-in'
-# Terminal = 'main'

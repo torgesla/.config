@@ -186,6 +186,8 @@ ins_right {
   padding = { left = 1 },
 }
 
+---@module 'lazy.core.spec'
+---@type LazySpec[]
 return {
   {
     'nvim-lualine/lualine.nvim',

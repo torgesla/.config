@@ -27,6 +27,7 @@ return {
       indent = { enable = true, disable = { 'ruby' } },
 
       textobjects = {
+        enable = false,
         select = {
           enable = true,
           lookahead = true,

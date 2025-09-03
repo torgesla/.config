@@ -1,3 +1,5 @@
+---@module 'lazy.core.spec'
+---@type LazySpec[]
 return {
   {
     'xzbdmw/colorful-menu.nvim',
@@ -8,9 +10,6 @@ return {
     cmd = 'Copilot',
     event = 'InsertEnter',
     opt = {},
-    -- config = function()
-    --   require('copilot').setup {}
-    -- end,
   },
   {
     'saghen/blink.cmp',
@@ -19,7 +18,6 @@ return {
       'giuxtaposition/blink-cmp-copilot',
     },
     version = '*',
-
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {

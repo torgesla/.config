@@ -86,8 +86,10 @@ return {
       '<leader><leader>',
       function()
         local buffers = vim.fn.getbufinfo { buflisted = 1 }
-        if #buffers <= 1 then
-          require('snacks.picker').smart()
+        if #buffers == 2 then
+          vim.cmd.bnext()
+        elseif #buffers < 2 then
+          require('snacks.picker').smart {}
         else
           require('snacks.picker').buffers {
             current = false,
@@ -130,9 +132,16 @@ return {
     {
       '<leader>fs',
       function()
-        require('snacks').picker.grep()
+        require('snacks').picker.grep { regex = false }
       end,
       desc = 'Fzf search in project',
+    },
+    {
+      '<leader>fr',
+      function()
+        require('snacks').picker.resume()
+      end,
+      desc = 'Resume last picker search',
     },
     {
       '<leader>/',

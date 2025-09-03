@@ -1,3 +1,5 @@
+---@module 'lazy.core.spec'
+---@type LazySpec[]
 return {
   'folke/flash.nvim',
   event = 'VeryLazy',
