@@ -36,9 +36,29 @@
 --   },
 -- }
 
----@module 'lazy.core.spec'
----@type LazySpec[]
 return {
+  {
+    'dmmulroy/ts-error-translator.nvim',
+    ft = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
+    opts = {},
+    --   config = function(_, opts)
+    --     require('ts-error-translator').setup(opts)
+    --     vim.lsp.handlers['textDocument/publishDiagnostics'] = function(err, result, ctx)
+    --       require('ts-error-translator').translate_diagnostics(err, result, ctx)
+    --       vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx)
+    --     end
+    --   end,
+  },
+  {
+    'rachartier/tiny-inline-diagnostic.nvim',
+    event = 'VeryLazy',
+    priority = 1000,
+    opts = { preset = 'modern' },
+    config = function(_, opts)
+      require('tiny-inline-diagnostic').setup(opts)
+      vim.diagnostic.config { virtual_text = false } -- Only if needed in your configuration, if you already have native LSP diagnostics
+    end,
+  },
   {
     'folke/trouble.nvim',
     cmd = 'Trouble',
@@ -57,14 +77,14 @@ return {
     keys = {
       {
         '<leader>xx',
-        '<cmd>Trouble diagnostics toggle<cr>',
+        '<cmd>Trouble diagnostics toggle focus=true<cr>',
         desc = 'Diagnostics (Trouble)',
       },
-      {
-        '<leader>xX',
-        '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
-        desc = 'Buffer Diagnostics (Trouble)',
-      },
+      -- {
+      --   '<leader>xX',
+      --   '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
+      --   desc = 'Buffer Diagnostics (Trouble)',
+      -- },
       -- {
       --   '<leader>cs',
       --   '<cmd>Trouble symbols toggle focus=false<cr>',
@@ -75,28 +95,16 @@ return {
       --   '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
       --   desc = 'LSP Definitions / references / ... (Trouble)',
       -- },
-      {
-        '<leader>xL',
-        '<cmd>Trouble loclist toggle<cr>',
-        desc = 'Location List (Trouble)',
-      },
-      {
-        '<leader>xQ',
-        '<cmd>Trouble qflist toggle<cr>',
-        desc = 'Quickfix List (Trouble)',
-      },
-    },
-  },
-  {
-    'rachartier/tiny-inline-diagnostic.nvim',
-    event = 'VeryLazy', -- Or `LspAttach`
-    priority = 1000,
-    config = function(_, opts)
-      require('tiny-inline-diagnostic').setup(opts)
-      vim.diagnostic.config { virtual_text = false } -- Only if needed in your configuration, if you already have native LSP diagnostics
-    end,
-    opts = {
-      preset = 'modern',
+      -- {
+      --   '<leader>xL',
+      --   '<cmd>Trouble loclist toggle<cr>',
+      --   desc = 'Location List (Trouble)',
+      -- },
+      -- {
+      --   '<leader>xQ',
+      --   '<cmd>Trouble qflist toggle<cr>',
+      --   desc = 'Quickfix List (Trouble)',
+      -- },
     },
   },
 }

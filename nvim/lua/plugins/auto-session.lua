@@ -3,6 +3,7 @@
 return {
   {
     'rmagatti/auto-session',
+    enabled = false,
     opts = {
       auto_restore_enabled = true,
       auto_session_suppress_dirs = { '~/', '~/Downloads', '~/Documents', '~/Desktop/' },

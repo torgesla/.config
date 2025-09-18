@@ -1,4 +1,3 @@
-# Config relating to the Lazygit UI
 gui:
   # The number of lines you scroll by when scrolling the main window
   scrollHeight: 2
@@ -42,10 +41,10 @@ gui:
   language: auto
   # Format used when displaying time e.g. commit time.
   # Uses Go's time format syntax: https://pkg.go.dev/time#Time.Format
-  timeFormat: 02 Jan 06
+  timeFormat: 01 Jan 11
   # Format used when displaying time if the time is less than 24 hours ago.
   # Uses Go's time format syntax: https://pkg.go.dev/time#Time.Format
-  shortTimeFormat: 3:04PM
+  shortTimeFormat: 12:34
   # Config relating to colors and styles.
   # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#color-attributes
   theme:
@@ -148,9 +147,9 @@ gui:
   spinner:
     # The frames of the spinner animation.
     frames:
-      - '|'
+      - "|"
       - /
-      - '-'
+      - "-"
       - \
     # The "speed" of the spinner in milliseconds.
     rate: 50
@@ -259,7 +258,7 @@ quitOnTopLevelReturn: false
 # Config relating to things outside of Lazygit like how files are opened, copying to clipboard, etc
 os:
   # Command for editing a file. Should contain "{{filename}}".
-  edit: ""
+  edit: "nvim {{filename}}"
   # Command for editing a file at a given line number. Should contain
   # "{{filename}}", and may optionally contain "{{line}}".
   editAtLine: ""
@@ -318,12 +317,12 @@ keybinding:
     nextItem: <down>
     prevItem-alt: k
     nextItem-alt: j
-    prevPage: ','
+    prevPage: ","
     nextPage: .
     scrollLeft: H
     scrollRight: L
     gotoTop: <
-    gotoBottom: '>'
+    gotoBottom: ">"
     toggleRangeSelect: v
     rangeSelectDown: <s-down>
     rangeSelectUp: <s-up>
@@ -343,7 +342,7 @@ keybinding:
     prevMatch: "N"
     startSearch: /
     optionMenu: <disabled>
-    optionMenu-alt1: '?'
+    optionMenu-alt1: "?"
     select: <space>
     goInto: <enter>
     confirm: <enter>
@@ -358,14 +357,14 @@ keybinding:
     scrollDownMain-alt1: J
     scrollUpMain-alt2: <c-u>
     scrollDownMain-alt2: <c-d>
-    executeShellCommand: ':'
+    executeShellCommand: ":"
     createRebaseOptionsMenu: m
     pullFiles: p
     pushFiles: P
     refresh: R
     createPatchOptionsMenu: <c-p>
-    nextTab: ']'
-    prevTab: '['
+    nextTab: "]"
+    prevTab: "["
     nextScreenMode: +
     prevScreenMode: _
     undo: z
@@ -376,10 +375,10 @@ keybinding:
     copyToClipboard: <c-o>
     openRecentRepos: <c-r>
     submitEditorText: <enter>
-    extrasMenu: '@'
+    extrasMenu: "@"
     toggleWhitespaceInDiffView: <c-w>
-    increaseContextInDiffView: '}'
-    decreaseContextInDiffView: '{'
+    increaseContextInDiffView: "}"
+    decreaseContextInDiffView: "{"
     increaseRenameSimilarityThreshold: )
     decreaseRenameSimilarityThreshold: (
     openDiffTool: <c-t>
@@ -401,7 +400,7 @@ keybinding:
     toggleStagedAll: a
     viewResetOptions: D
     fetch: f
-    toggleTreeView: '`'
+    toggleTreeView: "`"
     openMergeTool: M
     openStatusFilter: <c-b>
     copyFileInfoToClipboard: "y"

@@ -1,7 +1,15 @@
 local kmap = vim.keymap
 
 kmap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-
+kmap.set({ 'i', 'x', 'n', 's' }, '<D-s>', '<cmd>w<cr><esc>', { desc = 'Save file' })
+-- kmap.set({ 'n', 'x' }, '<leader>ca', function()
+--   require('tiny-code-action').code_action {}
+-- end, { noremap = true, silent = true })
+--
+-- kmap.set('n', '<leader>ff', function()
+--   require 'typescript-tools'
+--   vim.cmd 'TSToolsAddMissingImports | TSToolsFixAll'
+-- end, { desc = 'Add missing imports and fix all issues' })
 --kmap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 kmap.set('n', '<leader>sv', '<cmd>source $MYVIMRC<CR>', { desc = 'Source VIM config' })
 kmap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'Source VIM config' })
@@ -15,18 +23,17 @@ kmap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' }
 kmap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 kmap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-kmap.set('n', '<C-d>', '<C-d>zz')
-kmap.set('n', '<C-u>', '<C-u>zz')
-kmap.set('n', '<C-f>', '<C-f>zz')
 kmap.set('n', '<C-b>', '<C-b>zz')
+kmap.set('n', '<C-d>', '<C-d>zz', { desc = 'Move down in buffer with cursor centered' })
+kmap.set('n', '<C-f>', '<C-f>zz')
+kmap.set('n', '<C-u>', '<C-u>zz', { desc = 'Move up in buffer with cursor centered' })
+kmap.set('n', 'N', 'Nzzzv')
+kmap.set('n', 'n', 'nzzzv')
 
+-- Better J behavior
+kmap.set('n', 'J', 'mzJ`z', { desc = 'Join lines and keep cursor position' })
 -- kmap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Moves lines down in visual mode' })
 -- kmap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Moves lines up in visual mode' })
-
-kmap.set('n', '<C-d>', '<C-d>zz', { desc = 'Move down in buffer with cursor centered' })
-kmap.set('n', '<C-u>', '<C-u>zz', { desc = 'Move up in buffer with cursor centered' })
-kmap.set('n', 'n', 'nzzzv')
-kmap.set('n', 'N', 'Nzzzv')
 
 -- Tabs navigation
 kmap.set('n', '<leader>to', '<cmd>tabnew<CR>') --open new tab
@@ -46,8 +53,6 @@ kmap.set('n', '<leader>sx', '<cmd>close<CR>', { desc = 'Close current split' })
 kmap.set('n', 'Q', '<nop>')
 kmap.set('n', 'U', '<nop>')
 
-kmap.set('v', 'gs', "<cmd>'<,'>%sort<CR>")
-
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
@@ -58,5 +63,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- prevent x delete from registering when next paste
 kmap.set('n', 'x', '"_x')
+
+kmap.set('n', '<leader>d', function()
+  vim.diagnostic.open_float()
+end, { desc = 'Open diagnostic in floating window' })
+
 -- Replace the word cursor is on globally
-vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Replace word cursor is on globally' })
+-- kmap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Replace word cursor is on globally' })

@@ -1,12 +1,13 @@
-vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.number = false
+vim.opt.relativenumber = false
 
 vim.opt.iskeyword:append '-'
 vim.opt.path:append '**'
 vim.opt.spelllang = 'en_us,nb_no'
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-vim.opt.mouse = 'a'
+-- vim.opt.mouse = 'a'
+vim.opt.mouse = ''
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
@@ -57,6 +58,7 @@ vim.opt.virtualedit = 'block'
 vim.opt.scrolloff = 8
 
 vim.diagnostic.config {
+  float = { max_width = math.floor(0.8 * vim.o.columns) },
   virtual_lines = false,
   virtual_text = false,
 }

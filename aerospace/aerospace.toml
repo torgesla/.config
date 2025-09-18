@@ -93,10 +93,10 @@ ctrl-alt-shift-s = 'move-node-to-workspace Slack' #['move-node-to-workspace Slac
 ctrl-alt-shift-t = 'move-node-to-workspace Terminal' #['move-node-to-workspace Terminal','workspace Terminal']
 
 # Resize
-alt-h = 'resize width -100'
+alt-h = 'resize width +100' 
 alt-j = 'resize height -50'
 alt-k = 'resize height +50'
-alt-l = 'resize width +100'
+alt-l = 'resize width -100'
 
 ctrl-alt-comma = 'mode service'
 ctrl-alt-enter = 'fullscreen'

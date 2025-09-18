@@ -1,8 +1,9 @@
 ---@module 'lazy.core.spec'
 ---@type LazySpec[]
 return {
-  { -- Collection of various small independent plugins/modules
-    'echasnovski/mini.nvim',
+  {
+    -- Collection of various small independent plugins/modules
+    'nvim-mini/mini.nvim',
     version = false,
     config = function()
       -- Better Around/Inside textobjects
@@ -24,7 +25,7 @@ return {
       -- require('mini.operators').setup {}
       --
       -- Autopairs
-      require('mini.pairs').setup {}
+      -- require('mini.pairs').setup {}
 
       -- Add splitjoin functionality
       require('mini.splitjoin').setup { mappings = { toggle = '<leader>jl' } }

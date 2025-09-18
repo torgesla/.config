@@ -7,6 +7,7 @@ return {
   },
   {
     'zbirenbaum/copilot.lua',
+    enabled = false,
     cmd = 'Copilot',
     event = 'InsertEnter',
     opt = {},
@@ -21,9 +22,8 @@ return {
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
-      keymap = { preset = 'default' },
       appearance = {
-        use_nvim_cmp_as_default = true,
+        -- use_nvim_cmp_as_default = true,
         nerd_font_variant = 'mono',
       },
       cmdline = {
@@ -33,6 +33,7 @@ return {
         },
         keymap = { preset = 'inherit' },
       },
+      keymap = { preset = 'default' },
       completion = {
         accept = { auto_brackets = { enabled = false } },
         documentation = { auto_show = true, auto_show_delay_ms = 300 },
@@ -57,18 +58,33 @@ return {
       fuzzy = { implementation = 'prefer_rust_with_warning' },
       signature = { enabled = true },
       sources = {
-        default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+        default = {
+          'lsp',
+          'path',
+          'snippets',
+          'buffer',
+          -- 'copilot',
+          'omni',
+        },
+        per_filetype = {
+          lua = { inherit_defaults = true, 'lazydev' },
+        },
         providers = {
+          -- copilot = {
+          --   name = 'copilot',
+          --   module = 'blink-cmp-copilot',
+          --   score_offset = 100,
+          --   async = true,
+          -- },
           lazydev = {
             name = 'LazyDev',
             module = 'lazydev.integrations.blink',
             score_offset = 100,
           },
-          copilot = {
-            name = 'copilot',
-            module = 'blink-cmp-copilot',
-            score_offset = 100,
-            async = true,
+          snippets = {
+            should_show_items = function(ctx)
+              return ctx.trigger.initial_kind ~= 'trigger_character'
+            end,
           },
         },
       },

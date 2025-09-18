@@ -9,7 +9,11 @@ return {
       { 'folke/snacks.nvim', opts = { terminal = {} } },
     },
     event = 'LspAttach',
-    opts = { picker = 'snacks' },
+    opts = {
+      backend = 'delta',
+      picker = 'snacks',
+      resolve_timeout = 300,
+    },
     keys = {
       {
         '<leader>ca',

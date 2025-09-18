@@ -15,10 +15,11 @@ return {
       enabled = true,
       matcher = {
         cwd_bonus = true,
-        history_bonus = true,
         filename_bonus = true,
         frecency = false,
         fuzzy = true,
+        history_bonus = false,
+        ignorecase = true,
         smartcase = true,
       },
       formatters = {
@@ -86,18 +87,21 @@ return {
       '<leader><leader>',
       function()
         local buffers = vim.fn.getbufinfo { buflisted = 1 }
-        if #buffers == 2 then
-          vim.cmd.bnext()
-        elseif #buffers < 2 then
-          require('snacks.picker').smart {}
-        else
-          require('snacks.picker').buffers {
-            current = false,
-            on_show = function()
-              vim.cmd.stopinsert()
-            end,
-          }
+
+        if #buffers < 2 then
+          return require('snacks.picker').smart {}
         end
+
+        if #buffers == 2 then
+          return vim.cmd.bnext()
+        end
+
+        require('snacks.picker').buffers {
+          current = false,
+          on_show = function()
+            vim.cmd.stopinsert()
+          end,
+        }
       end,
       desc = 'Find buffers',
     },
@@ -132,7 +136,10 @@ return {
     {
       '<leader>fs',
       function()
-        require('snacks').picker.grep { regex = false }
+        require('snacks').picker.grep {
+          regex = false,
+          exclude = { 'package-lock.json', 'changelog.txt' },
+        }
       end,
       desc = 'Fzf search in project',
     },
@@ -143,13 +150,13 @@ return {
       end,
       desc = 'Resume last picker search',
     },
-    {
-      '<leader>/',
-      function()
-        require('snacks').picker.lines()
-      end,
-      desc = 'Fzf search in project',
-    },
+    -- {
+    --   '<leader>/',
+    --   function()
+    --     require('snacks').picker.lines()
+    --   end,
+    --   desc = 'Fzf search in project',
+    -- },
     {
       '<leader>lg',
       function()
@@ -164,13 +171,13 @@ return {
       end,
       desc = 'Goto Definition',
     },
-    {
-      'gD',
-      function()
-        require('snacks').picker.lsp_declarations()
-      end,
-      desc = 'Goto Declaration',
-    },
+    -- {
+    --   'gD',
+    --   function()
+    --     require('snacks').picker.lsp_declarations()
+    --   end,
+    --   desc = 'Goto Declaration',
+    -- },
     {
       'gr',
       function()
@@ -200,20 +207,32 @@ return {
       end,
       desc = 'LSP Symbols',
     },
-    {
-      '<leader>sS',
-      function()
-        require('snacks').picker.lsp_workspace_symbols()
-      end,
-      desc = 'LSP Workspace Symbols',
-    },
     -- {
-    --   '<leader>ca',
+    --   '<leader>sS',
     --   function()
-    --     vim.lsp.buf.code_action()
+    --     require('snacks').picker.lsp_workspace_symbols()
     --   end,
-    --   desc = 'LSP Code Actions',
+    --   desc = 'LSP Workspace Symbols',
     -- },
+    {
+      '<leader>ca',
+      function()
+        vim.lsp.buf.code_action {
+          apply = true,
+          only = { 'source' },
+        }
+      end,
+      desc = 'LSP Code Actions',
+    },
+    {
+      '<leader>cA',
+      function()
+        vim.lsp.buf.code_action {
+          apply = true,
+        }
+      end,
+      desc = 'LSP All Code Actions',
+    },
     {
       '<leader>km',
       function()
