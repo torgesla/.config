@@ -21,6 +21,14 @@ return {
       -- Autohighlight word under cursor
       require('mini.cursorword').setup {}
 
+      require('mini.comment').setup {
+        options = {
+          custom_commentstring = function()
+            return require('ts_context_commentstring').calculate_commentstring() or vim.bo.commentstring
+          end,
+        },
+      }
+
       -- Text edit operators
       -- require('mini.operators').setup {}
       --

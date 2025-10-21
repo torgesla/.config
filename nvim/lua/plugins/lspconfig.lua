@@ -1,5 +1,3 @@
----@module 'lazy.core.spec'
----@type LazySpec[]
 return {
   {
     'Bilal2453/luvit-meta',
@@ -14,21 +12,37 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = { 'saghen/blink.cmp', 'folke/lazydev.nvim' },
     config = function(_, opts)
-      local lspconfig = require 'lspconfig'
       for server, config in pairs(opts.servers) do
+        vim.lsp.enable(server, true)
         config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-        lspconfig[server].setup(config)
+        vim.lsp.config(server, config)
       end
-      -- EslintFixAll on save
-      -- vim.api.nvim_create_autocmd('BufWritePre', {
-      --   -- pattern = { '*.js', '*.ts', '*.jsx', '*.tsx' },
-      --   pattern = { '*.ts', '*.tsx' },
-      --   command = 'EslintFixAll',
-      -- })
     end,
+
+    -- EslintFixAll on save
+    -- vim.api.nvim_create_autocmd('BufWritePre', {
+    --   -- pattern = { '*.js', '*.ts', '*.jsx', '*.tsx' },
+    --   pattern = { '*.ts', '*.tsx' },
+    --   command = 'EslintFixAll',
+    -- })
     opts = {
+      capabilities = require('blink.cmp').get_lsp_capabilities(),
       servers = {
-        -- eslint = {},
+        emmylua_ls = {
+          filetypes = { 'lua' },
+          settings = {
+            Lua = {
+              completion = { callSnippet = 'Replace' },
+              diagnostics = { globals = { 'vim', 'require' } },
+              runtime = { version = 'LuaJIT' },
+              telemetry = { enable = false },
+              workspace = { library = vim.api.nvim_get_runtime_file('', true) },
+            },
+          },
+        },
+        eslint = {},
+        pyright = {},
+        tailwindcss = {},
         -- vtsls = {
         --   filetypes = {
         --     'javascript',
@@ -66,19 +80,6 @@ return {
         --     },
         --   },
         -- },
-        lua_ls = {
-          settings = {
-            Lua = {
-              completion = { callSnippet = 'Replace' },
-              diagnostics = { globals = { 'vim', 'require' } },
-              runtime = { version = 'LuaJIT' },
-              telemetry = { enable = false },
-              workspace = { library = vim.api.nvim_get_runtime_file('', true) },
-            },
-          },
-        },
-        pyright = {},
-        tailwindcss = {},
       },
     },
   },

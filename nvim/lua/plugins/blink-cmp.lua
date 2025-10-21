@@ -1,5 +1,4 @@
----@module 'lazy.core.spec'
----@type LazySpec[]
+---@type LazySpec
 return {
   {
     'xzbdmw/colorful-menu.nvim',

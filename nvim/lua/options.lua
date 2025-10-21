@@ -43,7 +43,8 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.wrap = false
-
+vim.opt.linebreak = true
+vim.opt.textwidth = 100
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
 

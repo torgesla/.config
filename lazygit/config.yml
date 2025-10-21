@@ -1,6 +1,6 @@
 gui:
   # The number of lines you scroll by when scrolling the main window
-  scrollHeight: 2
+  scrollHeight: 10
   # If true, allow scrolling past the bottom of the content in the main window
   scrollPastBottom: true
   # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#scroll-off-margin
@@ -9,7 +9,7 @@ gui:
   scrollOffBehavior: margin
   # If true, capture mouse events.
   # When mouse events are captured, it's a little harder to select text: e.g. requiring you to hold the option key when on macOS.
-  mouseEvents: true
+  mouseEvents: false
   # If true, do not show a warning when discarding changes in the staging view.
   skipDiscardChangeWarning: false
   # If true, do not show warning when applying/popping the stash
@@ -20,12 +20,12 @@ gui:
   skipRewordInEditorWarning: false
   # Fraction of the total screen width to use for the left side section. You may want to pick a small number (e.g. 0.2) if you're using a narrow screen, so that you can see more of the main section.
   # Number from 0 to 1.0.
-  sidePanelWidth: 0.3333
+  sidePanelWidth: 0.2
   # If true, increase the height of the focused side window; creating an accordion effect.
-  expandFocusedSidePanel: false
+  expandFocusedSidePanel: true
   # The weight of the expanded side panel, relative to the other panels. 2 means
   # twice as tall as the other panels. Only relevant if `expandFocusedSidePanel` is true.
-  expandedSidePanelWeight: 2
+  expandedSidePanelWeight: 10
   # Sometimes the main window is split in two (e.g. when the selected file has both staged and unstaged changes). This setting controls how the two sections are split.
   # Options are:
   # - 'horizontal': split the window horizontally
@@ -131,7 +131,7 @@ gui:
   splitDiff: auto
   # Default size for focused window. Window size can be changed from within Lazygit with '+' and '_' (but this won't change the default).
   # One of: 'normal' (default) | 'half' | 'full'
-  screenMode: half
+  screenMode: normal
   # Window border style.
   # One of 'rounded' (default) | 'single' | 'double' | 'hidden'
   border: rounded
@@ -161,16 +161,11 @@ git:
   # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md
   paging:
     # Value of the --color arg in the git diff command. Some pagers want this to be set to 'always' and some want it set to 'never'
-    colorArg: always
-    # e.g.
-    # diff-so-fancy
-    # delta --dark --paging=never
-    # ydiff -p cat -s --wrap --width={{columnWidth}}
-    pager: ""
+    # colorArg: always
+    # pager: "delta --dark  --paging=never"
     # If true, Lazygit will use whatever pager is specified in `$GIT_PAGER`, `$PAGER`, or your *git config*. If the pager ends with something like ` | less` we will strip that part out, because less doesn't play nice with our rendering approach. If the custom pager uses less under the hood, that will also break rendering (hence the `--paging=never` flag for the `delta` pager).
-    useConfig: false
-    # e.g. 'difft --color=always'
-    externalDiffCommand: ""
+    # useConfig: true
+    externalDiffCommand: "difft --color='always'"
   # Config relating to committing
   commit:
     # If true, pass '--signoff' flag when committing
@@ -216,7 +211,7 @@ git:
   branchPrefix: ""
   # If true, parse emoji strings in commit messages e.g. render :rocket: as 🚀
   # (This should really be under 'gui', not 'git')
-  parseEmoji: false
+  parseEmoji: true
   # Config for showing the log in the commits view
   log:
     # One of: 'date-order' | 'author-date-order' | 'topo-order' | 'default'
@@ -254,7 +249,7 @@ refresher:
 # If true, show a confirmation popup before quitting Lazygit
 confirmOnQuit: false
 # If true, exit Lazygit when the user presses escape in a context where there is nothing to cancel/close
-quitOnTopLevelReturn: false
+quitOnTopLevelReturn: true
 # Config relating to things outside of Lazygit like how files are opened, copying to clipboard, etc
 os:
   # Command for editing a file. Should contain "{{filename}}".
@@ -311,6 +306,7 @@ keybinding:
     quit: q
     quit-alt1: <c-c>
     return: <esc>
+    return-alt1: "-"
     quitWithoutChangingDirectory: Q
     togglePanel: <tab>
     prevItem: <up>
@@ -351,13 +347,14 @@ keybinding:
     new: "n"
     edit: e
     openFile: o
-    scrollUpMain: <pgup>
-    scrollDownMain: <pgdown>
-    scrollUpMain-alt1: K
-    scrollDownMain-alt1: J
-    scrollUpMain-alt2: <c-u>
-    scrollDownMain-alt2: <c-d>
-    executeShellCommand: ":"
+    scrollUpMain: K
+    scrollDownMain: J
+
+    # scrollUpMain-alt1: <pgup>
+    # scrollDownMain-alt1: <pgdown>
+    # scrollUpMain-alt2: <c-u>
+    # scrollDownMain-alt2: <c-d>
+    executeShellCommand: "<disabled>"
     createRebaseOptionsMenu: m
     pullFiles: p
     pushFiles: P

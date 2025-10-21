@@ -16,9 +16,9 @@ return {
       matcher = {
         cwd_bonus = true,
         filename_bonus = true,
-        frecency = false,
+        frecency = true,
         fuzzy = true,
-        history_bonus = false,
+        history_bonus = true,
         ignorecase = true,
         smartcase = true,
       },
