@@ -5,3 +5,6 @@
 .env.*
 raycast/**
 gcloud/**
+.copilot/**
+nvm/**
+

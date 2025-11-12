@@ -19,12 +19,20 @@ return {
     },
     keys = {
       {
+        '<leader>o',
+        function()
+          require('oil').open()
+        end,
+        desc = 'Open parent directory',
+      },
+      {
         '-',
         function()
           require('oil').open()
         end,
         desc = 'Open parent directory',
       },
+
       -- {
       --   '<leader>o',
       --   function()

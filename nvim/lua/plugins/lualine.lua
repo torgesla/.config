@@ -1,16 +1,16 @@
 local colors = {
   bg = '#202328',
-  fg = '#bbc2cf',
-  yellow = '#ECBE7B',
+  blue = '#51afef',
   cyan = '#008080',
   darkblue = '#081633',
+  fg = '#bbc2cf',
   green = '#98be65',
-  orange = '#FF8800',
-  violet = '#a9a1e1',
   magenta = '#c678dd',
-  blue = '#51afef',
+  orange = '#FF8800',
   red = '#ec5f67',
+  violet = '#a9a1e1',
   white = '#ffffff',
+  yellow = '#ECBE7B',
 }
 
 local conditions = {
@@ -27,7 +27,6 @@ local conditions = {
   end,
 }
 
--- Config
 local config = {
   options = {
     always_show_tabline = false,
@@ -44,12 +43,10 @@ local config = {
     lualine_b = {},
     lualine_y = {},
     lualine_z = {},
-    -- These will be filled later
     lualine_c = {},
     lualine_x = {},
   },
   inactive_sections = {
-    -- these are to remove the defaults
     lualine_a = {},
     lualine_b = {},
     lualine_y = {},
@@ -114,9 +111,9 @@ ins_left {
   color = { fg = colors.violet, gui = 'bold' },
 }
 
-ins_left { 'location' }
-
-ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
+-- ins_left { 'location' }
+--
+-- ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 
 -- Insert mid section. You can make any number of sections in neovim :)
 -- for lualine it's any number greater then 2
@@ -128,6 +125,7 @@ ins_left {
 
 ins_left {
   'filename',
+  path = 1,
   cond = conditions.buffer_not_empty,
   color = { fg = colors.magenta, gui = 'bold' },
 }
@@ -156,7 +154,6 @@ ins_right {
 }
 
 ins_right {
-  -- Lsp server name .
   function()
     local msg = 'No Lsp'
     local buf_ft = vim.bo.filetype
@@ -186,15 +183,10 @@ ins_right {
   padding = { left = 1 },
 }
 
----@module 'lazy.core.spec'
----@type LazySpec[]
 return {
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
-    -- enabled = false,
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require('lualine').setup(config)
     end,

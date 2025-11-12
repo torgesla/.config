@@ -6,7 +6,7 @@ return {
     opts = { use_default_keymaps = false, max_join_length = 1000 },
     keys = {
       {
-        '<leader>jl',
+        '<leader>jj',
         function()
           require('treesj').toggle()
         end,

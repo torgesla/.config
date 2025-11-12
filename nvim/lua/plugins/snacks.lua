@@ -7,6 +7,7 @@ return {
     bigfile = { enabled = true },
     dashboard = { enabled = true },
     explorer = { enabled = true, replace_netrw = false, layout = { cycle = false } },
+    gh = { enabled = true },
     image = { enabled = true },
     indent = { enabled = true },
     input = { enabled = true },
@@ -21,14 +22,9 @@ return {
         history_bonus = true,
         ignorecase = true,
         smartcase = true,
+        sort_empty = true,
       },
-      formatters = {
-        file = {
-          filename_first = true,
-          filename_only = false,
-          icon_width = 2,
-        },
-      },
+      formatters = { file = { filename_first = true, filename_only = false, icon_width = 2 } },
       layout = { preset = 'select', cycle = false },
       layouts = {
         select = {
@@ -63,48 +59,47 @@ return {
   },
   keys = {
     {
-      '<leader>gl',
-      function()
-        require('snacks').lazygit.log()
-      end,
-      desc = 'Lazygit Logs',
-    },
-    {
-      '<leader>rN',
-      function()
-        require('snacks').rename.rename_file()
-      end,
-      desc = 'Fast Rename Current File',
-    },
-    -- {
-    --   '<leader>dB',
-    --   function()
-    --     require('snacks').bufdelete()
-    --   end,
-    --   desc = 'Delete or Close Buffer  (Confirm)',
-    -- },
-    {
       '<leader><leader>',
       function()
-        local buffers = vim.fn.getbufinfo { buflisted = 1 }
+        local function fallback_buffer_picker()
+          local buffers = vim.fn.getbufinfo { buflisted = 1 }
 
-        if #buffers < 2 then
-          return require('snacks.picker').smart {}
+          if #buffers < 2 then
+            return require('snacks.picker').smart(
+              ---@type snacks.picker.smart.Config
+              {}
+            )
+          end
+
+          if #buffers == 2 then
+            return vim.cmd.bnext()
+          end
+
+          require('snacks.picker').buffers {
+            current = false,
+            sort_lastused = true,
+            on_show = function()
+              vim.cmd.stopinsert()
+            end,
+          }
         end
 
-        if #buffers == 2 then
-          return vim.cmd.bnext()
+        local git_check = vim.system({ 'git', 'status', '--porcelain' }):wait()
+
+        if git_check.code == 0 then
+          local files = vim.split(git_check.stdout, '\n', { trimempty = true })
+          local file_count = #files
+
+          if file_count > 1 then
+            return require('snacks.picker').git_status()
+          end
         end
 
-        require('snacks.picker').buffers {
-          current = false,
-          on_show = function()
-            vim.cmd.stopinsert()
-          end,
-        }
+        return fallback_buffer_picker()
       end,
-      desc = 'Find buffers',
+      desc = 'Git status (if >1) / Buffers',
     },
+
     {
       '<leader>cs',
       function()
@@ -112,20 +107,16 @@ return {
       end,
       desc = 'Colorschemes',
     },
+
     {
       '<leader>e',
       function()
+        ---@type snacks.picker.smart.Config
         require('snacks').picker.smart()
       end,
       desc = 'Find smart file',
     },
-    {
-      '<leader>:',
-      function()
-        require('snacks').picker.command_history()
-      end,
-      desc = 'Command History',
-    },
+
     {
       '<leader>fe',
       function()
@@ -133,30 +124,26 @@ return {
       end,
       desc = 'File Explorer',
     },
+
     {
-      '<leader>fs',
+      '<leader>s',
       function()
         require('snacks').picker.grep {
-          regex = false,
           exclude = { 'package-lock.json', 'changelog.txt' },
+          regex = false,
         }
       end,
       desc = 'Fzf search in project',
     },
+
     {
       '<leader>fr',
       function()
         require('snacks').picker.resume()
       end,
-      desc = 'Resume last picker search',
+      desc = 'Find Resume',
     },
-    -- {
-    --   '<leader>/',
-    --   function()
-    --     require('snacks').picker.lines()
-    --   end,
-    --   desc = 'Fzf search in project',
-    -- },
+
     {
       '<leader>lg',
       function()
@@ -164,89 +151,50 @@ return {
       end,
       desc = 'Lazygit',
     },
+
     {
       'gd',
       function()
         require('snacks').picker.lsp_definitions()
       end,
-      desc = 'Goto Definition',
+      desc = 'Go Definition',
     },
-    -- {
-    --   'gD',
-    --   function()
-    --     require('snacks').picker.lsp_declarations()
-    --   end,
-    --   desc = 'Goto Declaration',
-    -- },
+
     {
       'gr',
       function()
         require('snacks').picker.lsp_references()
       end,
       nowait = true,
-      desc = 'References',
+      desc = 'Go References',
     },
-    {
-      'gI',
-      function()
-        require('snacks').picker.lsp_implementations()
-      end,
-      desc = 'Goto Implementation',
-    },
-    {
-      'gy',
-      function()
-        require('snacks').picker.lsp_type_definitions()
-      end,
-      desc = 'Goto T[y]pe Definition',
-    },
-    {
-      '<leader>ss',
-      function()
-        require('snacks').picker.lsp_symbols()
-      end,
-      desc = 'LSP Symbols',
-    },
-    -- {
-    --   '<leader>sS',
-    --   function()
-    --     require('snacks').picker.lsp_workspace_symbols()
-    --   end,
-    --   desc = 'LSP Workspace Symbols',
-    -- },
+
     {
       '<leader>ca',
       function()
         vim.lsp.buf.code_action {
           apply = true,
-          only = { 'source' },
+          -- only = { 'source' },
         }
       end,
-      desc = 'LSP Code Actions',
+      desc = 'Code Actions',
     },
-    {
-      '<leader>cA',
-      function()
-        vim.lsp.buf.code_action {
-          apply = true,
-        }
-      end,
-      desc = 'LSP All Code Actions',
-    },
+
     {
       '<leader>km',
       function()
         require('snacks').picker.keymaps()
       end,
-      desc = 'Keymaps',
     },
+
     {
-      '<leader>fb',
+      '<leader>b',
       function()
         require('snacks').picker.buffers()
       end,
       desc = 'Buffers',
     },
+
     {
       '<leader>hp',
       function()
@@ -254,5 +202,91 @@ return {
       end,
       desc = 'Help Pages',
     },
+    {
+      '<leader>pr',
+      function()
+        require('snacks').picker.gh_pr()
+      end,
+      desc = 'Github Pull Requests (open)',
+    },
+    -- {
+    --   '<leader>gl',
+    --   function()
+    --     require('snacks').lazygit.log()
+    --   end,
+    --   desc = 'Lazygit Logs',
+    -- },
+    -- {
+    --   '<leader>rN',
+    --   function()
+    --     require('snacks').rename.rename_file()
+    --   end,
+    --   desc = 'Fast Rename Current File',
+    -- },
+    -- {
+    --   '<leader>dB',
+    --   function()
+    --     require('snacks').bufdelete()
+    --   end,
+    --   desc = 'Delete or Close Buffer  (Confirm)',
+    -- },
+    -- {
+    --   '<leader>:',
+    --   function()
+    --     require('snacks').picker.command_history()
+    --   end,
+    --   desc = 'Command History',
+    -- },
+    -- {
+    --   '<leader>/',
+    --   function()
+    --     require('snacks').picker.lines()
+    --   end,
+    --   desc = 'Fzf search in project',
+    -- },
+    -- {
+    --   'gD',
+    --   function()
+    --     require('snacks').picker.lsp_declarations()
+    --   end,
+    --   desc = 'Goto Declaration',
+    -- },
+    -- {
+    --   'gI',
+    --   function()
+    --     require('snacks').picker.lsp_implementations()
+    --   end,
+    --   desc = 'Goto Implementation',
+    -- },
+    -- {
+    --   'gy',
+    --   function()
+    --     require('snacks').picker.lsp_type_definitions()
+    --   end,
+    --   desc = 'Goto T[y]pe Definition',
+    -- },
+    -- {
+    --   '<leader>ss',
+    --   function()
+    --     require('snacks').picker.lsp_symbols()
+    --   end,
+    --   desc = 'LSP Symbols',
+    -- },
+    -- {
+    --   '<leader>sS',
+    --   function()
+    --     require('snacks').picker.lsp_workspace_symbols()
+    --   end,
+    --   desc = 'LSP Workspace Symbols',
+    -- },
+    -- {
+    --   '<leader>cA',
+    --   function()
+    --     vim.lsp.buf.code_action {
+    --       apply = true,
+    --     }
+    --   end,
+    --   desc = 'LSP All Code Actions',
+    -- },
   },
 }

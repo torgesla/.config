@@ -1,4 +1,3 @@
-# Start AeroSpace at login
 start-at-login = true
 
 # You can use it to add commands that run after login to macOS user session.
@@ -16,7 +15,6 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 
 accordion-padding = 30
 
-# Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
 
 # Possible values: horizontal|vertical|auto
@@ -29,9 +27,7 @@ key-mapping.preset = 'qwerty'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = "move-mouse window-lazy-center"
 
-# - Constant:     gaps.outer.top = 8
 # - Per monitor:  gaps.outer.top = [{ monitor.main = 16 }, { monitor."built-in" = 32 }, 24]
-#   Here 24 is a default value when there is no match.
 [gaps]
 inner.horizontal = 5
 inner.vertical =   5
@@ -42,7 +38,6 @@ outer.right =      12
 outer.top =        12
 
 [key-mapping.key-notation-to-key-code]
-# Browser = 'b'
 Code = 'c'
 Media = 'm'
 Office = 'o'

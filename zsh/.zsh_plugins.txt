@@ -1,0 +1,4 @@
+git
+npm
+zsh-users/zsh-autosuggestions
+zdharma-continuum/fast-syntax-highlighting kind:defer

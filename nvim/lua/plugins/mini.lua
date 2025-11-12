@@ -1,50 +1,83 @@
----@module 'lazy.core.spec'
----@type LazySpec[]
 return {
+  { 'nvim-mini/mini.ai', opts = { n_lines = 500 } },
   {
-    -- Collection of various small independent plugins/modules
-    'nvim-mini/mini.nvim',
-    version = false,
-    config = function()
-      -- Better Around/Inside textobjects
-      --  - va)  - [V]isually select [A]round [)]paren
-      --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
-      --  - ci'  - [C]hange [I]nside [']quote
-      require('mini.ai').setup { n_lines = 500 }
-
-      -- Common configuration presets
-      -- require('mini.basics').setup {}
-
-      -- Remove buffers
-      require('mini.bufremove').setup {}
-
-      -- Autohighlight word under cursor
-      require('mini.cursorword').setup {}
-
-      require('mini.comment').setup {
-        options = {
-          custom_commentstring = function()
-            return require('ts_context_commentstring').calculate_commentstring() or vim.bo.commentstring
-          end,
-        },
-      }
-
-      -- Text edit operators
-      -- require('mini.operators').setup {}
-      --
-      -- Autopairs
-      -- require('mini.pairs').setup {}
-
-      -- Add splitjoin functionality
-      require('mini.splitjoin').setup { mappings = { toggle = '<leader>jl' } }
-
-      -- saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-      -- sd'   - [S]urround [D]elete [']quotes
-      -- sr)'  - [S]urround [R]eplace [)] [']
-      -- Add surround motions
-      require('mini.surround').setup {}
-
-      require('mini.misc').setup_termbg_sync()
+    'nvim-mini/mini.misc',
+    setup = function()
+      require('nvim-mini/mini.misc').setup_termbg_sync()
     end,
   },
+  { 'nvim-mini/mini.bufremove', opts = {} },
+  { 'nvim-mini/mini.cursorword', opts = {} },
+  {
+    'nvim-mini/mini.pick',
+    opts = {},
+    keys = {
+      {
+        '<leader>mp',
+        function()
+          require('mini.pick').builtin.grep()
+        end,
+      },
+    },
+  },
+  {
+    'nvim-mini/mini.splitjoin',
+    opts = {},
+    keys = {
+      {
+        '<leader>jj',
+        function()
+          require('mini.splitjoin').toggle()
+        end,
+      },
+    },
+  },
+  { 'nvim-mini/mini.surround', opts = {} },
+  {
+    'nvim-mini/mini.comment',
+    opts = {
+      options = {
+        custom_commentstring = function()
+          return require('ts_context_commentstring').calculate_commentstring() or vim.bo.commentstring
+        end,
+      },
+    },
+  },
+  {
+    'nvim-mini/mini.files',
+    enabled = false,
+    opts = {
+      options = {
+        permanent_delete = false,
+        use_as_default_explorer = false,
+      },
+    },
+    keys = {
+      {
+        '-',
+        function()
+          require('mini.files').open()
+        end,
+        desc = 'Open mini files',
+      },
+    },
+  },
+
+  -- {
+  --   -- Collection of various small independent plugins/modules
+  --   'nvim-mini/mini.nvim',
+  --   version = false,
+  --   config = function()
+  --     require('mini.misc').setup_termbg_sync()
+  --   end,
+  --   -- keys = {
+  --   --   {
+  --   --     '-',
+  --   --     function()
+  --   --       require('mini.files').open()
+  --   --     end,
+  --   --     desc = 'Open mini files',
+  --   --   },
+  --   -- },
+  -- },
 }

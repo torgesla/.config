@@ -8,16 +8,9 @@ fi
 
 # --- Environment Variables ---
 # Set fundamental environment variables first.
-export XDG_CONFIG_HOME="$HOME/.config"
 export EDITOR="nvim"
 export MANPAGER='nvim +Man!'
 export ZSH="$HOME/.oh-my-zsh" # Define ZSH path before sourcing oh-my-zsh
-
-
-# Source company-specific zsh configurations (which will in turn source env vars)
-if [ -f "$XDG_CONFIG_HOME/zsh/company-specific.zsh" ]; then
-  source "$XDG_CONFIG_HOME/zsh/company-specific.zsh"
-fi
 
 # --- Oh My Zsh Setup ---
 # Theme and plugins for Oh My Zsh.
@@ -62,7 +55,6 @@ source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 eval "$(zoxide init zsh)" # zoxide
-
 source <(fzf --zsh)     # fzf key bindings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh # fzf completions
 
@@ -86,10 +78,6 @@ alias zshrc="nvim ~/.zshrc"
 alias config="nvim ~/.config/"
 alias pac="bat package.json | fzf --layout reverse-list"
 alias pn="pnpm"
-
-# NPM
-alias build="npm run build"
-alias dev="npm run dev"
 
 # Confirmation Aliases (Important to keep together)
 alias cp='cp -i'
@@ -160,7 +148,3 @@ function ff() {
 # for file in $HOME/.dotfiles/zsh/.{exports,functions,path,config,aliases}.zsh; do
 #   [ -r "$file" ] && [ -f "$file" ] && source "$file"
 # done
-
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

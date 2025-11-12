@@ -1,5 +1,3 @@
----@module 'lazy.core.spec'
----@type LazySpec[]
 return {
   {
     'rachartier/tiny-code-action.nvim',

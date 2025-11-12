@@ -2,6 +2,13 @@ local kmap = vim.keymap
 
 kmap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 kmap.set({ 'i', 'x', 'n', 's' }, '<D-s>', '<cmd>w<cr><esc>', { desc = 'Save file' })
+
+kmap.set('n', 'grn', '<nop>')
+kmap.set('n', 'gra', '<nop>')
+kmap.set('n', 'grr', '<nop>')
+kmap.set('n', 'gri', '<nop>')
+kmap.set('n', 'grt', '<nop>')
+
 -- kmap.set({ 'n', 'x' }, '<leader>ca', function()
 --   require('tiny-code-action').code_action {}
 -- end, { noremap = true, silent = true })
@@ -10,11 +17,14 @@ kmap.set({ 'i', 'x', 'n', 's' }, '<D-s>', '<cmd>w<cr><esc>', { desc = 'Save file
 --   require 'typescript-tools'
 --   vim.cmd 'TSToolsAddMissingImports | TSToolsFixAll'
 -- end, { desc = 'Add missing imports and fix all issues' })
+
 --kmap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-kmap.set('n', '<leader>sv', '<cmd>source $MYVIMRC<CR>', { desc = 'Source VIM config' })
-kmap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'Source VIM config' })
+
+kmap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'Rename symbol' })
 
 kmap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+kmap.set('n', 'x', '"_x', { desc = 'Prevent x delete from registering when next paste' })
 kmap.set('n', 'c', '"_c', { desc = 'Change operation without overwriting clipboard' })
 
 -- Keybinds to make split navigation easier.
@@ -23,15 +33,21 @@ kmap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' }
 kmap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 kmap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-kmap.set('n', '<C-b>', '<C-b>zz')
-kmap.set('n', '<C-d>', '<C-d>zz', { desc = 'Move down in buffer with cursor centered' })
-kmap.set('n', '<C-f>', '<C-f>zz')
-kmap.set('n', '<C-u>', '<C-u>zz', { desc = 'Move up in buffer with cursor centered' })
+kmap.set('n', '<C-b>', '<C-b>zz', { desc = 'Move one page up and recenter cursor ' })
+kmap.set('n', '<C-d>', '<C-d>zz', { desc = 'Move half page down and recenter cursor ' })
+kmap.set('n', '<C-f>', '<C-f>zz', { desc = 'Move one page down and recenter cursor ' })
+kmap.set('n', '<C-u>', '<C-u>zz', { desc = 'Move half page up and recenter cursor ' })
+kmap.set('n', '<C-F>', '<C-F>zz', { desc = 'Move one page down and recenter cursor ' })
+kmap.set('n', '<C-U>', '<C-U>zz', { desc = 'Move half page up and recenter cursor ' })
+kmap.set('n', '<PgDown>', '<PgDown>zz', { desc = 'Move one page down and recenter cursor ' })
+kmap.set('n', '<PgUp>', '<PgUp>zz', { desc = 'Move one page down and recenter cursor ' })
+
 kmap.set('n', 'N', 'Nzzzv')
 kmap.set('n', 'n', 'nzzzv')
 
 -- Better J behavior
 kmap.set('n', 'J', 'mzJ`z', { desc = 'Join lines and keep cursor position' })
+
 -- kmap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Moves lines down in visual mode' })
 -- kmap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Moves lines up in visual mode' })
 
@@ -39,30 +55,22 @@ kmap.set('n', 'J', 'mzJ`z', { desc = 'Join lines and keep cursor position' })
 kmap.set('n', '<leader>to', '<cmd>tabnew<CR>') --open new tab
 kmap.set('n', '<leader>tn', '<cmd>tabn<CR>') --go to next
 kmap.set('n', '<leader>tp', '<cmd>tabp<CR>') --go to pre
--- kmap.set('n', '<leader>tf', '<cmd>tabnew %<CR>') --open current tab in new tab
 
 --Split management
-kmap.set('n', '<leader>sv', '<C-w>v', { desc = 'Split window vertically' })
--- Split window vertically
-kmap.set('n', '<leader>sh', '<C-w>s', { desc = 'Split window horizontally' })
--- Split window horizontally
-kmap.set('n', '<leader>se', '<C-w>=', { desc = 'Make splits equal size' }) -- make split windows equal width & height
--- Close current split window
-kmap.set('n', '<leader>sx', '<cmd>close<CR>', { desc = 'Close current split' })
+-- kmap.set('n', '<leader>sv', '<cmd>vsplit<CR>', { desc = 'Split window vertically' })
+-- kmap.set('n', '<leader>sh', '<cmd>split<CR>', { desc = 'Split window horizontally' })
 
 kmap.set('n', 'Q', '<nop>')
 kmap.set('n', 'U', '<nop>')
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function()
-    vim.hl.on_yank()
+    vim.hl.on_yank { timeout = 500 }
   end,
+  -- group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  -- pattern = "*"
 })
-
--- prevent x delete from registering when next paste
-kmap.set('n', 'x', '"_x')
 
 kmap.set('n', '<leader>d', function()
   vim.diagnostic.open_float()

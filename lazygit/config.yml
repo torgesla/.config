@@ -1,3 +1,17 @@
+# If true, show a confirmation popup before quitting Lazygit
+confirmOnQuit: false
+# If true, don't display introductory popups upon opening Lazygit.
+disableStartupPopups: false
+# What to do when opening Lazygit outside of a git repo.
+# - 'prompt': (default) ask whether to initialize a new repo or open in the most recent repo
+# - 'create': initialize a new repo
+# - 'skip': open most recent repo
+# - 'quit': exit Lazygit
+notARepository: "quit"
+# If true, display a confirmation when subprocess terminates. This allows you to view the output of the subprocess before returning to Lazygit.
+promptToReturnFromSubprocess: true
+# If true, exit Lazygit when the user presses escape in a context where there is nothing to cancel/close
+quitOnTopLevelReturn: true
 gui:
   # The number of lines you scroll by when scrolling the main window
   scrollHeight: 10
@@ -20,7 +34,7 @@ gui:
   skipRewordInEditorWarning: false
   # Fraction of the total screen width to use for the left side section. You may want to pick a small number (e.g. 0.2) if you're using a narrow screen, so that you can see more of the main section.
   # Number from 0 to 1.0.
-  sidePanelWidth: 0.2
+  sidePanelWidth: 0.3
   # If true, increase the height of the focused side window; creating an accordion effect.
   expandFocusedSidePanel: true
   # The weight of the expanded side panel, relative to the other panels. 2 means
@@ -159,13 +173,13 @@ gui:
 # Config relating to git
 git:
   # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md
-  paging:
-    # Value of the --color arg in the git diff command. Some pagers want this to be set to 'always' and some want it set to 'never'
-    # colorArg: always
-    # pager: "delta --dark  --paging=never"
-    # If true, Lazygit will use whatever pager is specified in `$GIT_PAGER`, `$PAGER`, or your *git config*. If the pager ends with something like ` | less` we will strip that part out, because less doesn't play nice with our rendering approach. If the custom pager uses less under the hood, that will also break rendering (hence the `--paging=never` flag for the `delta` pager).
-    # useConfig: true
-    externalDiffCommand: "difft --color='always'"
+  pagers:
+    - # Value of the --color arg in the git diff command. Some pagers want this to be set to 'always' and some want it set to 'never'
+      # colorArg: always
+      # pager: "delta --dark  --paging=never"
+      # If true, Lazygit will use whatever pager is specified in `$GIT_PAGER`, `$PAGER`, or your *git config*. If the pager ends with something like ` | less` we will strip that part out, because less doesn't play nice with our rendering approach. If the custom pager uses less under the hood, that will also break rendering (hence the `--paging=never` flag for the `delta` pager).
+      # useConfig: true
+      externalDiffCommand: "difft --color='always'"
   # Config relating to committing
   commit:
     # If true, pass '--signoff' flag when committing
@@ -237,7 +251,7 @@ update:
   # One of: 'prompt' (default) | 'background' | 'never'
   method: prompt
   # Period in days between update checks
-  days: 14
+  days: 1
 # Background refreshes
 refresher:
   # File/submodule refresh interval in seconds.
@@ -246,10 +260,6 @@ refresher:
   # Re-fetch interval in seconds.
   # Auto-fetch can be disabled via option 'git.autoFetch'.
   fetchInterval: 60
-# If true, show a confirmation popup before quitting Lazygit
-confirmOnQuit: false
-# If true, exit Lazygit when the user presses escape in a context where there is nothing to cancel/close
-quitOnTopLevelReturn: true
 # Config relating to things outside of Lazygit like how files are opened, copying to clipboard, etc
 os:
   # Command for editing a file. Should contain "{{filename}}".
@@ -290,16 +300,6 @@ os:
   # ReadFromClipboardCmd is the command for reading the clipboard.
   # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#custom-command-for-copying-to-and-pasting-from-clipboard
   readFromClipboardCmd: ""
-# If true, don't display introductory popups upon opening Lazygit.
-disableStartupPopups: false
-# What to do when opening Lazygit outside of a git repo.
-# - 'prompt': (default) ask whether to initialize a new repo or open in the most recent repo
-# - 'create': initialize a new repo
-# - 'skip': open most recent repo
-# - 'quit': exit Lazygit
-notARepository: prompt
-# If true, display a confirmation when subprocess terminates. This allows you to view the output of the subprocess before returning to Lazygit.
-promptToReturnFromSubprocess: true
 # Keybindings
 keybinding:
   universal:
@@ -349,7 +349,6 @@ keybinding:
     openFile: o
     scrollUpMain: K
     scrollDownMain: J
-
     # scrollUpMain-alt1: <pgup>
     # scrollDownMain-alt1: <pgdown>
     # scrollUpMain-alt2: <c-u>
@@ -398,7 +397,7 @@ keybinding:
     viewResetOptions: D
     fetch: f
     toggleTreeView: "`"
-    openMergeTool: M
+    openMergeOptions: M
     openStatusFilter: <c-b>
     copyFileInfoToClipboard: "y"
   branches:
