@@ -1,6 +1,7 @@
 return {
   'folke/snacks.nvim',
   priority = 1000,
+
   lazy = false,
   ---@type snacks.Config
   opts = {
@@ -65,23 +66,24 @@ return {
           local buffers = vim.fn.getbufinfo { buflisted = 1 }
 
           if #buffers < 2 then
-            return require('snacks.picker').smart(
-              ---@type snacks.picker.smart.Config
-              {}
-            )
+            return require('snacks.picker').smart()
           end
 
           if #buffers == 2 then
             return vim.cmd.bnext()
           end
 
-          require('snacks.picker').buffers {
-            current = false,
-            sort_lastused = true,
-            on_show = function()
-              vim.cmd.stopinsert()
-            end,
-          }
+          require('snacks.picker').buffers(
+            ---@module "snacks"
+            ---@type snacks.picker.buffers.Config
+            {
+              current = false,
+              sort_lastused = true,
+              on_show = function()
+                vim.cmd.stopinsert()
+              end,
+            }
+          )
         end
 
         local git_check = vim.system({ 'git', 'status', '--porcelain' }):wait()
@@ -91,7 +93,13 @@ return {
           local file_count = #files
 
           if file_count > 1 then
-            return require('snacks.picker').git_status()
+            return require('snacks.picker').git_status(
+              ---@type snacks.picker.type.status.Config
+              {
+                current = false,
+                sort_lastused = true,
+              }
+            )
           end
         end
 
@@ -111,7 +119,6 @@ return {
     {
       '<leader>e',
       function()
-        ---@type snacks.picker.smart.Config
         require('snacks').picker.smart()
       end,
       desc = 'Find smart file',
@@ -120,7 +127,9 @@ return {
     {
       '<leader>fe',
       function()
-        require('snacks').explorer { layout = { layout = { position = 'right' } } }
+        ---@type snacks.picker.explorer.Config
+        local opts = { layout = { layout = { position = 'right' } } }
+        require('snacks').explorer(opts)
       end,
       desc = 'File Explorer',
     },
@@ -128,10 +137,12 @@ return {
     {
       '<leader>s',
       function()
-        require('snacks').picker.grep {
+        ---@type snacks.picker.grep.Config
+        local opts = {
           exclude = { 'package-lock.json', 'changelog.txt' },
           regex = false,
         }
+        require('snacks').picker.grep(opts)
       end,
       desc = 'Fzf search in project',
     },
@@ -188,9 +199,11 @@ return {
     },
 
     {
-      '<leader>b',
+      '<leader>bb',
       function()
-        require('snacks').picker.buffers()
+        ---@type snacks.picker.buffers.Config
+        local opts = { current = false }
+        require('snacks').picker.buffers(opts)
       end,
       desc = 'Buffers',
     },

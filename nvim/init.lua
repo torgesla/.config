@@ -16,4 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 require 'options'
 require 'keymaps'
 require 'lazy-plugins'
+
+require 'custom-functions'
 require 'neovide'

@@ -1,6 +1,15 @@
 return {
   { 'Bilal2453/luvit-meta', lazy = true },
-  { 'folke/lazydev.nvim' },
+  {
+    'folke/lazydev.nvim',
+    ft = 'lua',
+    opts = {
+      library = {
+        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+        { path = 'snacks.nvim', words = { 'Snacks', 'snacks' } },
+      },
+    },
+  },
   {
     'neovim/nvim-lspconfig',
     dependencies = { 'saghen/blink.cmp', 'folke/lazydev.nvim' },
@@ -35,11 +44,23 @@ return {
         },
         eslint = {},
         gopls = {},
+        lua_ls = {
+          filetypes = { 'lua' },
+          settings = {
+            Lua = {
+              completion = { callSnippet = 'Replace' },
+              diagnostics = { globals = { 'vim', 'require' } },
+              runtime = { version = 'LuaJIT' },
+              telemetry = { enable = false },
+              workspace = { library = vim.api.nvim_get_runtime_file('', true) },
+            },
+          },
+        },
         prismals = {},
         pyright = {},
         tailwindcss = {},
-        yamlls = {},
         -- tsgo = {},
+        yamlls = {},
       },
     },
   },

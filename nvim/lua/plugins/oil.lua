@@ -1,12 +1,11 @@
 return {
-  { 'nvim-tree/nvim-web-devicons', lazy = true },
   {
     'stevearc/oil.nvim',
     cmd = 'Oil',
     enabled = true,
     -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
     lazy = false,
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    dependencies = { 'nvim-mini/mini.icons', opts = {} },
     event = { 'VimEnter */*,.*', 'BufNew */*,.*' },
     ---@module 'oil'
     ---@type oil.SetupOpts

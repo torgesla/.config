@@ -155,6 +155,13 @@ function ff() {
     aerospace list-windows --all --format '%{window-id}%{right-padding} | %{app-name}%{right-padding} | %{window-title}%{right-padding} | %{workspace}' | fzf --bind 'enter:execute(bash -c "aerospace focus --window-id {1}")+abort'
 }
 
+# --- Tmux Autostart ---
+# Automatically start or attach to tmux session in ghostty
+if [[ -z "$TMUX" ]] && [[ "$TERM_PROGRAM" == "ghostty" ]]; then
+  # Try to attach to existing session, or create new one
+  tmux attach-session -t main 2>/dev/null || tmux new-session -s main
+fi
+
 # --- Custom Source Files (if any) ---
 # If you decide to split your config into smaller files, source them here.
 # for file in $HOME/.dotfiles/zsh/.{exports,functions,path,config,aliases}.zsh; do
@@ -164,3 +171,8 @@ function ff() {
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/torgeir.laurvik/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions

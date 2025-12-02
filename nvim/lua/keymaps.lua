@@ -78,3 +78,24 @@ end, { desc = 'Open diagnostic in floating window' })
 
 -- Replace the word cursor is on globally
 -- kmap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Replace word cursor is on globally' })
+
+-- kmap.set('n', '<leader>ti', function()
+--   require('custom-functions.').toggle_typescript_interface_type()
+-- end, { desc = 'Toggle TypeScript interface/type' })
+
+-- Node specific
+local build_win = nil
+kmap.set('n', '<leader>bn', function()
+  if build_win and vim.api.nvim_win_is_valid(build_win) then
+    vim.api.nvim_win_call(build_win, function()
+      vim.cmd 'close'
+    end)
+    build_win = nil
+  else
+    vim.cmd 'split'
+    vim.cmd 'wincmd j'
+    vim.cmd 'terminal npm run build'
+    build_win = vim.api.nvim_get_current_win()
+    vim.cmd 'wincmd k'
+  end
+end, { desc = 'Toggle npm build in bottom split' })

@@ -65,9 +65,21 @@ return {
     keys = {
       {
         '<leader>xx',
+        -- function()
+        --   require('trouble').diagnostics.toggle { focus = true }
+        -- end,
         '<cmd>Trouble diagnostics toggle focus=true<cr>',
         desc = 'Diagnostics (Trouble)',
       },
+      {
+        '<leader>qq',
+        '<cmd>Trouble qflist toggle<cr>',
+        -- function()
+        --   require('trouble').qflist.toggle()
+        -- end,
+        desc = 'Quickfix list (Trouble)',
+      },
+
       -- {
       --   '<leader>xX',
       --   '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',

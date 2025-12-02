@@ -3,14 +3,33 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     config = function(_, opts)
-      -- Prefer git instead of curl in order to improve connectivity in some environments
-      require('nvim-treesitter.install').prefer_git = true
+      -- require('nvim-treesitter.install').prefer_git = true
       require('nvim-treesitter.configs').setup(opts)
     end,
     opts = {
       auto_install = true,
-      ensure_installed = 'all',
-      ignore_install = { 'ipkg' },
+      ensure_installed = {
+        'angular',
+        'c',
+        'css',
+        'csv',
+        'dockerfile',
+        'go',
+        'git_config',
+        'java',
+        'javascript',
+        'lua',
+        'markdown',
+        'markdown_inline',
+        'prisma',
+        'python',
+        'query',
+        'rust',
+        'tsx',
+        'typescript',
+        'vim',
+        'vimdoc',
+      },
 
       highlight = {
         enable = true,
@@ -32,7 +51,6 @@ return {
           enable = true,
           lookahead = true,
           keymaps = {
-            -- You can use the capture groups defined in textobjects.scm
             ['if'] = '@function.inner',
             ['af'] = '@function.outer',
             ['as'] = { query = '@scope', query_group = 'locals', desc = 'Select language scope' },
@@ -46,5 +64,8 @@ return {
       },
     },
   },
-  { 'nvim-treesitter/nvim-treesitter-textobjects' },
+  {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+  },
 }

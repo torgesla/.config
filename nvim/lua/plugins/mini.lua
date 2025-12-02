@@ -1,5 +1,6 @@
 return {
   { 'nvim-mini/mini.ai', opts = { n_lines = 500 } },
+  { 'nvim-mini/mini.icons' },
   {
     'nvim-mini/mini.misc',
     setup = function()

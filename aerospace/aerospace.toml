@@ -119,8 +119,12 @@ ctrl-alt-m = ['move-workspace-to-monitor --wrap-around next', 'mode main']
 if.app-id = 'com.electron.dockerdesktop'
 run = "move-node-to-workspace Terminal"
 
+# [[on-window-detected]]
+# if.app-id ='com.microsoft.VSCode' 
+# run = "move-node-to-workspace Code"
+
 [[on-window-detected]]
-if.app-id ='com.microsoft.VSCode' 
+if.app-id ='com.mitchellh.ghostty' 
 run = "move-node-to-workspace Code"
 
 [[on-window-detected]]
