@@ -3,7 +3,10 @@ vim.opt.relativenumber = false
 
 vim.opt.iskeyword:append '-'
 vim.opt.path:append '**'
-vim.opt.spelllang = 'en_us,nb_no'
+
+vim.opt.spellfile = vim.fn.stdpath 'config' .. '/spell/custom.utf-8.add'
+vim.opt.spelllang = 'en_us' --,nb_no'
+-- vim.opt.spell = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 -- vim.opt.mouse = 'a'
@@ -33,7 +36,7 @@ vim.opt.signcolumn = 'yes:2'
 vim.opt.updatetime = 250
 
 -- Decrease mapped sequence wait time
--- Displays which-key popup sooner
+-- Displays which-key pop-up sooner
 vim.opt.timeoutlen = 300
 
 -- Hide command line when not in use (works with noice.nvim)
@@ -62,7 +65,8 @@ vim.opt.virtualedit = 'block'
 vim.opt.scrolloff = 8
 
 vim.diagnostic.config {
-  float = { max_width = math.floor(0.8 * vim.o.columns) },
+  float = { max_width = math.floor(0.8 * vim.o.columns), max_height = math.floor(0.8 * vim.o.lines) },
+
   virtual_lines = false,
   virtual_text = false,
 }

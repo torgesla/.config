@@ -75,6 +75,7 @@ return {
           'buffer',
           -- 'copilot',
           'omni',
+          -- 'spell',
         },
         per_filetype = {
           lua = { inherit_defaults = true, 'lazydev' },

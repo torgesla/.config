@@ -44,6 +44,7 @@ return {
         },
         eslint = {},
         gopls = {},
+        jsonls = {},
         lua_ls = {
           filetypes = { 'lua' },
           settings = {
@@ -59,6 +60,9 @@ return {
         prismals = {},
         pyright = {},
         tailwindcss = {},
+        typos_lsp = {
+          filetypes = { '*', 'oil' },
+        },
         -- tsgo = {},
         yamlls = {},
       },

@@ -41,7 +41,14 @@ return {
     'rachartier/tiny-inline-diagnostic.nvim',
     event = 'VeryLazy',
     priority = 1000,
-    opts = { preset = 'modern' },
+    opts = {
+      preset = 'modern',
+      options = {
+        multilines = false,
+        show_source = false,
+        -- truncate_message_length = 80,
+      },
+    },
     config = function(_, opts)
       require('tiny-inline-diagnostic').setup(opts)
       vim.diagnostic.config { virtual_text = false } -- Only if needed in your configuration, if you already have native LSP diagnostics
