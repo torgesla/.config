@@ -94,11 +94,14 @@ alt-j = 'resize height -50'
 alt-k = 'resize height +50'
 alt-l = 'resize width -100'
 
+ctrl-alt-space = 'focus-back-and-forth'
+# ctrl-alt-space = 'exec-and-forget /Users/torgeir.laurvik/.config/aerospace/focus-back-and-forth-workspace.sh'
+ctrl-alt-n = 'workspace-back-and-forth'
+
+ctrl-alt-enter = 'exec-and-forget /Users/torgeir.laurvik/.config/aerospace/focus-ghostty.sh'
+ctrl-alt-f = 'fullscreen'
+
 ctrl-alt-comma = 'mode service'
-ctrl-alt-enter = 'fullscreen'
-ctrl-alt-space = 'workspace-back-and-forth'
-# ctrl-alt-space = 'exec-and-forget /Users/torgeir.laurvik/.config/aerospace/workspace-cycle.sh'
-ctrl-alt-slash = 'layout tiles horizontal vertical'
 
 [mode.service.binding]
 esc = ['reload-config', 'mode main']

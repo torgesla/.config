@@ -8,3 +8,4 @@ gcloud/**
 .copilot/**
 nvm/**
 tmux/plugins/**
+aerospace/workspace-history
