@@ -27,6 +27,14 @@ return {
       },
       formatters = { file = { filename_first = true, filename_only = false, icon_width = 2 } },
       layout = { preset = 'select', cycle = false },
+      win = {
+        input = {
+          keys = {
+            ['<C-f>'] = { 'toggle_fuzzy', mode = { 'n', 'i' } },
+            ['<C-i>'] = { 'toggle_ignorecase', mode = { 'n', 'i' } },
+          },
+        },
+      },
       layouts = {
         select = {
           preview = 'main',
@@ -155,13 +163,13 @@ return {
       desc = 'Find Resume',
     },
 
-    {
-      '<leader>lg',
-      function()
-        require('snacks').lazygit.open()
-      end,
-      desc = 'Lazygit',
-    },
+    -- {
+    --   '<leader>lg',
+    --   function()
+    --     require('snacks').lazygit.open()
+    --   end,
+    --   desc = 'Lazygit',
+    -- },
 
     {
       'gd',
@@ -183,12 +191,42 @@ return {
     {
       '<leader>ca',
       function()
-        vim.lsp.buf.code_action {
-          apply = true,
-          -- only = { 'source' },
+        local params = vim.lsp.util.make_range_params()
+        params.context = {
+          diagnostics = vim.lsp.diagnostic.get_line_diagnostics(),
         }
+
+        vim.lsp.buf_request_all(0, 'textDocument/codeAction', params, function(results)
+          local actions = {}
+          for client_id, result in pairs(results) do
+            if result.result then
+              for _, action in pairs(result.result) do
+                table.insert(actions, action)
+              end
+            end
+          end
+
+          local auto_fix = nil
+          for _, action in ipairs(actions) do
+            if action.title == 'Fix all auto-fixable problems' then
+              auto_fix = action
+              break
+            end
+          end
+
+          if auto_fix then
+            vim.lsp.buf.code_action {
+              apply = true,
+              filter = function(action)
+                return action.title == 'Fix all auto-fixable problems'
+              end,
+            }
+          else
+            vim.lsp.buf.code_action { apply = true }
+          end
+        end)
       end,
-      desc = 'Code Actions',
+      desc = 'Code Actions (auto-fix)',
     },
 
     {

@@ -4,25 +4,27 @@ return {
   { 'zbirenbaum/copilot.lua', enabled = false, cmd = 'Copilot', event = 'InsertEnter', opt = {} },
   {
     'saghen/blink.cmp',
+    -- event = { 'InsertEnter', 'CmdwinEnter' },
     dependencies = {
       'rafamadriz/friendly-snippets',
       'giuxtaposition/blink-cmp-copilot',
       { 'nvim-mini/mini.icons', opts = {} },
     },
     version = '*',
-    ---@module 'blink.cmp'
-    ---@type blink.cmp.Config
     opts = {
       appearance = {
         -- use_nvim_cmp_as_default = true,
-        nerd_font_variant = 'mono',
+        -- nerd_font_variant = 'mono',
       },
       cmdline = {
         completion = {
           ghost_text = { enabled = true },
           menu = { auto_show = true },
         },
-        keymap = { preset = 'inherit' },
+        keymap = {
+          preset = 'inherit',
+          -- ['<CR>'] = { 'accept', 'fallback' },
+        },
       },
       keymap = { preset = 'default' },
       completion = {

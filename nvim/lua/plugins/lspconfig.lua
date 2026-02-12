@@ -45,6 +45,7 @@ return {
         eslint = {},
         gopls = {},
         jsonls = {},
+        marksman = {},
         lua_ls = {
           filetypes = { 'lua' },
           settings = {

@@ -1,0 +1,32 @@
+# EditorConfig helps maintain consistent coding styles across different editors
+root = true
+
+# --- Global Default Settings ---
+# Applies to ALL files unless overridden below
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+max_line_length = 80
+trim_trailing_whitespace = true
+
+# --- Specific Overrides ---
+
+# Markdown: Needs trailing whitespace for line breaks
+[*.md]
+trim_trailing_whitespace = false
+
+# Makefiles: MUST use tabs
+[Makefile]
+indent_style = tab
+
+# Python: PEP 8 requires 4 spaces
+[*.py]
+indent_size = 4
+
+# Go: gofmt requires tabs
+[*.go]
+indent_style = tab
+indent_size = 4

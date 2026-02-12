@@ -3,6 +3,9 @@ return {
     'pmizio/typescript-tools.nvim',
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
     opts = {
+      on_attach = function(client, bufnr)
+        require('twoslash-queries').attach(client, bufnr)
+      end,
       complete_function_calls = true,
       expose_as_code_action = 'all',
       code_lens = 'all',
@@ -25,5 +28,20 @@ return {
     -- config = function()
     --   require('ts_context_commmentstring').setup { enable_autocmd = false }
     -- end,
+  },
+  {
+    'marilari88/twoslash-queries.nvim',
+    ft = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
+    opts = {
+      multi_line = true,
+      is_enabled = true,
+    },
+    keys = {
+      {
+        '<C-k>',
+        '<cmd>TwoslashQueriesInspect<CR>',
+        desc = 'Open mini files',
+      },
+    },
   },
 }

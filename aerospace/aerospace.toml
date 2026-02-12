@@ -98,7 +98,8 @@ ctrl-alt-space = 'focus-back-and-forth'
 # ctrl-alt-space = 'exec-and-forget /Users/torgeir.laurvik/.config/aerospace/focus-back-and-forth-workspace.sh'
 ctrl-alt-n = 'workspace-back-and-forth'
 
-ctrl-alt-enter = 'exec-and-forget /Users/torgeir.laurvik/.config/aerospace/focus-ghostty.sh'
+# ctrl-alt-enter = 'exec-and-forget /Users/torgeir.laurvik/.config/aerospace/focus-ghostty.sh'
+ctrl-alt-enter = 'fullscreen'
 ctrl-alt-f = 'fullscreen'
 
 ctrl-alt-comma = 'mode service'

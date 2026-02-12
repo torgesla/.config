@@ -189,6 +189,7 @@ return {
     dependencies = { 'nvim-mini/mini.icons' },
     config = function()
       require('lualine').setup(config)
+      -- require('lualine').setup()
     end,
   },
 }

@@ -303,10 +303,10 @@ os:
 # Keybindings
 keybinding:
   universal:
-    quit: q
-    quit-alt1: <c-c>
+    quit: <c-c>
+    # quit-alt1: q
     return: <esc>
-    return-alt1: "-"
+    # return-alt1: "-"
     quitWithoutChangingDirectory: Q
     togglePanel: <tab>
     prevItem: <up>
@@ -349,10 +349,8 @@ keybinding:
     openFile: o
     scrollUpMain: K
     scrollDownMain: J
-    # scrollUpMain-alt1: <pgup>
-    # scrollDownMain-alt1: <pgdown>
-    # scrollUpMain-alt2: <c-u>
-    # scrollDownMain-alt2: <c-d>
+    scrollUpMain-alt1: "{"
+    scrollDownMain-alt1: "}"
     executeShellCommand: "<disabled>"
     createRebaseOptionsMenu: m
     pullFiles: p
@@ -373,8 +371,8 @@ keybinding:
     submitEditorText: <enter>
     extrasMenu: "@"
     toggleWhitespaceInDiffView: <c-w>
-    increaseContextInDiffView: "}"
-    decreaseContextInDiffView: "{"
+    # increaseContextInDiffView: "}"
+    # decreaseContextInDiffView: "{"
     increaseRenameSimilarityThreshold: )
     decreaseRenameSimilarityThreshold: (
     openDiffTool: <c-t>

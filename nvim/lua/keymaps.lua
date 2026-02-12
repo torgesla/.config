@@ -2,6 +2,8 @@ local kmap = vim.keymap
 
 kmap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 kmap.set({ 'i', 'x', 'n', 's' }, '<D-s>', '<cmd>w<cr><esc>', { desc = 'Save file' })
+kmap.set('n', '<leader>cpa', ':let @+=expand("%:p")<CR>', { desc = 'Copy path (absolute)' })
+kmap.set('n', '<leader>cpr', ':let @+=expand("%")<CR>', { desc = 'Copy path (relative)' })
 
 kmap.set('n', 'grn', '<nop>')
 kmap.set('n', 'gra', '<nop>')
@@ -75,6 +77,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 kmap.set('n', '<leader>d', function()
   vim.diagnostic.open_float()
 end, { desc = 'Open diagnostic in floating window' })
+-- vim.keymap.set('n', '<leader>d', function()
+--   require('nvim-pretty-ts-errors').show_line_diagnostics()
+-- end)
 
 -- Replace the word cursor is on globally
 -- kmap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Replace word cursor is on globally' })
@@ -96,6 +101,7 @@ kmap.set('n', '<leader>bn', function()
     vim.cmd 'wincmd j'
     vim.cmd 'terminal npm run build'
     build_win = vim.api.nvim_get_current_win()
+    vim.cmd 'normal! G'
     vim.cmd 'wincmd k'
   end
 end, { desc = 'Toggle npm build in bottom split' })
