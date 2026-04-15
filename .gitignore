@@ -1,13 +1,15 @@
-configstore/**
 # configstore/update-notifier-@github/copilot.json
 # configstore/update-notifier-@google/gemini-cli.json
 **/node_modules
-.DS_Store 
+.DS_Store
+.copilot/**
 .env
 .env.*
-raycast/**
-gcloud/**
-.copilot/**
-nvm/**
-tmux/plugins/**
 aerospace/workspace-history
+composer/**
+configstore/**
+gcloud/**
+iterm2/**
+nvm/**
+raycast/**
+tmux/plugins/**

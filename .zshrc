@@ -141,16 +141,51 @@ alias stash="git stash --include-untracked"
 alias unstash="git stash pop"
 
 # --- Functions ---
-# Group your functions together.
+# Interactive Package Manager Independent Script Runner
+function run() {
+  if [ ! -f package.json ]; then
+    echo "No package.json found."
+    return 1
+  fi
+
+  # 1. Use jq to format the output as "key": "value" and feed it to fzf (no preview window)
+  local selection=$(jq -r '.scripts | to_entries | .[] | "\"\(.key)\": \"\(.value)\""' package.json | fzf --height 40% --reverse --prompt="🚀 Run script: ")
+
+  if [[ -z "$selection" ]]; then
+    return 0
+  fi
+
+  # 2. Extract ONLY the script name from the chosen line.
+  # awk splits the string by quotes (") and prints the 2nd piece, which is the script name.
+  local script=$(echo "$selection" | awk -F'"' '{print $2}')
+
+  # 3. Detect the package manager
+  local pkg_manager="npm"
+  if [ -f "bun.lockb" ] || [ -f "bun.lock" ]; then
+    pkg_manager="bun"
+  elif [ -f "pnpm-lock.yaml" ]; then
+    pkg_manager="pnpm"
+  elif [ -f "yarn.lock" ]; then
+    pkg_manager="yarn"
+  fi
+
+  # 4. Execute the script
+  echo "🚀 Running: $pkg_manager run $script"
+  $pkg_manager run "$script"
+}
+
 function rebase() {
     git fetch origin "$1" && git rebase origin/"$1"
 }
+
 function merge() {
     git fetch origin "$1" && git merge origin/"$1"
 }
+
 function checkout() {
     git checkout "$1"
 }
+
 function ff() {
     aerospace list-windows --all --format '%{window-id}%{right-padding} | %{app-name}%{right-padding} | %{window-title}%{right-padding} | %{workspace}' | fzf --bind 'enter:execute(bash -c "aerospace focus --window-id {1}")+abort'
 }

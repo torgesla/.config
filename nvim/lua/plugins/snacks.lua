@@ -260,6 +260,21 @@ return {
       end,
       desc = 'Github Pull Requests (open)',
     },
+    {
+      '<leader>td',
+      function()
+        require('snacks').picker.todo_comments()
+      end,
+      desc = 'Todo',
+    },
+    {
+      '<leader>tD',
+      function()
+        require('snacks').picker.todo_comments { keywords = { 'TODO', 'FIX', 'FIXME' } }
+      end,
+      desc = 'Todo/Fix/Fixme',
+    },
+
     -- {
     --   '<leader>gl',
     --   function()

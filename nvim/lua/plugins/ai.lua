@@ -1,9 +1,22 @@
 return {
   {
     'folke/sidekick.nvim',
+    enabled = true,
+    event = 'VeryLazy',
     opts = {
-      -- add any options here
+      nes = {
+        trigger = {
+          -- also trigger NES while in insert mode after a pause (respects vim's updatetime)
+          events = { 'ModeChanged i:n', 'TextChanged', 'User SidekickNesDone', 'CursorHoldI' },
+        },
+      },
       cli = {
+        win = {
+          layout = 'right',
+          split = {
+            width = 80,
+          },
+        },
         mux = {
           backend = 'tmux',
           enabled = true,
@@ -12,18 +25,8 @@ return {
     },
     keys = {
       {
-        '<tab>',
-        function()
-          -- if there is a next edit, jump to it, otherwise apply it if any
-          if not require('sidekick').nes_jump_or_apply() then
-            return '<Tab>' -- fallback to normal tab
-          end
-        end,
-        expr = true,
-        desc = 'Goto/Apply Next Edit Suggestion',
-      },
-      {
-        '<c-.>',
+        -- '<c-.>',
+        '<leader>ai',
         function()
           require('sidekick.cli').toggle()
         end,

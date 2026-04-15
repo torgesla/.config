@@ -27,169 +27,157 @@ local conditions = {
   end,
 }
 
-local config = {
-  options = {
-    always_show_tabline = false,
-    component_separators = '',
-    section_separators = '',
-    theme = {
-      normal = { c = { fg = colors.fg, bg = colors.bg } },
-      inactive = { c = { fg = colors.fg, bg = colors.bg } },
-    },
-  },
-  sections = {
-    -- these are to remove the defaults
-    lualine_a = {},
-    lualine_b = {},
-    lualine_y = {},
-    lualine_z = {},
-    lualine_c = {},
-    lualine_x = {},
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_y = {},
-    lualine_z = {},
-    lualine_c = {},
-    lualine_x = {},
-  },
-}
-
--- Inserts a component in lualine_c at left section
-local function ins_left(component)
-  table.insert(config.sections.lualine_c, component)
-end
-
--- Inserts a component in lualine_x at right section
-local function ins_right(component)
-  table.insert(config.sections.lualine_x, component)
-end
-
-ins_left {
-  function()
-    return '▊'
-  end,
-  color = { fg = colors.blue }, -- Sets highlighting of component
-  padding = { left = 0, right = 1 }, -- We don't need space before this
-}
-ins_left {
-  'mode',
-  separator = { left = '' },
-  right_padding = 2,
-  color = function()
-    -- auto change color according to neovims mode
-    local mode_color = {
-      n = colors.white,
-      i = colors.green,
-      v = colors.blue,
-      [''] = colors.blue,
-      V = colors.blue,
-      c = colors.magenta,
-      no = colors.red,
-      s = colors.orange,
-      S = colors.orange,
-      [''] = colors.orange,
-      ic = colors.yellow,
-      R = colors.violet,
-      Rv = colors.violet,
-      cv = colors.red,
-      ce = colors.red,
-      r = colors.cyan,
-      rm = colors.cyan,
-      ['r?'] = colors.cyan,
-      ['!'] = colors.red,
-      t = colors.red,
-    }
-    return { fg = mode_color[vim.fn.mode()] }
-  end,
-}
-
-ins_left {
-  'branch',
-  icon = '',
-  color = { fg = colors.violet, gui = 'bold' },
-}
-
--- ins_left { 'location' }
---
--- ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
-
--- Insert mid section. You can make any number of sections in neovim :)
--- for lualine it's any number greater then 2
-ins_left {
-  function()
-    return '%='
-  end,
-}
-
-ins_left {
-  'filename',
-  path = 1,
-  cond = conditions.buffer_not_empty,
-  color = { fg = colors.magenta, gui = 'bold' },
-}
-
-ins_left {
-  'diff',
-  -- Is it me or the symbol for modified us really weird
-  symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
-  diff_color = {
-    added = { fg = colors.green },
-    modified = { fg = colors.orange },
-    removed = { fg = colors.red },
-  },
-  cond = conditions.hide_in_width,
-}
-
-ins_right {
-  'diagnostics',
-  sources = { 'nvim_diagnostic' },
-  symbols = { error = ' ', warn = ' ', info = ' ' },
-  diagnostics_color = {
-    error = { fg = colors.red },
-    warn = { fg = colors.yellow },
-    info = { fg = colors.cyan },
-  },
-}
-
-ins_right {
-  function()
-    local msg = 'No Lsp'
-    local buf_ft = vim.bo.filetype
-    local clients = vim.lsp.get_clients {
-      bufnr = vim.api.nvim_get_current_buf(),
-    }
-    if next(clients) == nil then
-      return msg
-    end
-    for _, client in ipairs(clients) do
-      local filetypes = client.config.filetypes
-      if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        return client.name
-      end
-    end
-    return msg
-  end,
-  icon = ' :',
-  color = { fg = colors.white, gui = 'bold' },
-}
-
-ins_right {
-  function()
-    return '▊'
-  end,
-  color = { fg = colors.blue },
-  padding = { left = 1 },
-}
-
 return {
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-mini/mini.icons' },
+    dependencies = {
+      -- 'christopher-francisco/tmux-status.nvim',
+      'nvim-mini/mini.icons',
+    },
     config = function()
-      require('lualine').setup(config)
-      -- require('lualine').setup()
+      -- local tmux_status = require 'tmux-status'
+      -- tmux_status.setup {}
+      require('lualine').setup {
+        options = {
+          always_show_tabline = false,
+          component_separators = '',
+          section_separators = '',
+          theme = {
+            normal = { c = { fg = colors.fg, bg = colors.bg } },
+            inactive = { c = { fg = colors.fg, bg = colors.bg } },
+          },
+        },
+        sections = {
+          lualine_c = {
+            {
+              function()
+                return '▊'
+              end,
+              color = { fg = colors.blue }, -- Sets highlighting of component
+              padding = { left = 0, right = 1 }, -- We don't need space before this
+            },
+            -- {
+            --   tmux_status.tmux_session,
+            --   cond = tmux_status.show,
+            --   -- padding = { left = 3 },
+            -- },
+            -- {
+            --   tmux_status.tmux_windows,
+            --   cond = tmux_status.show,
+            --   -- padding = { left = 3 },
+            -- },
+            {
+              'mode',
+              separator = { left = '' },
+              right_padding = 2,
+              color = function()
+                -- auto change color according to neovims mode
+                local mode_color = {
+                  n = colors.white,
+                  i = colors.green,
+                  v = colors.blue,
+                  [''] = colors.blue,
+                  V = colors.blue,
+                  c = colors.magenta,
+                  no = colors.red,
+                  s = colors.orange,
+                  S = colors.orange,
+                  [''] = colors.orange,
+                  ic = colors.yellow,
+                  R = colors.violet,
+                  Rv = colors.violet,
+                  cv = colors.red,
+                  ce = colors.red,
+                  r = colors.cyan,
+                  rm = colors.cyan,
+                  ['r?'] = colors.cyan,
+                  ['!'] = colors.red,
+                  t = colors.red,
+                }
+                return { fg = mode_color[vim.fn.mode()] }
+              end,
+            },
+            {
+              'branch',
+              icon = '',
+              color = { fg = colors.violet, gui = 'bold' },
+            },
+            {
+              function()
+                return '%='
+              end,
+            },
+            {
+              'filename',
+              path = 1,
+              cond = conditions.buffer_not_empty,
+              color = { fg = colors.magenta, gui = 'bold' },
+            },
+            {
+              'diff',
+              symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
+              diff_color = {
+                added = { fg = colors.green },
+                modified = { fg = colors.orange },
+                removed = { fg = colors.red },
+              },
+              cond = conditions.hide_in_width,
+            },
+          },
+          lualine_x = {
+            {
+              'diagnostics',
+              sources = { 'nvim_diagnostic' },
+              symbols = { error = ' ', warn = ' ', info = ' ' },
+              diagnostics_color = {
+                error = { fg = colors.red },
+                warn = { fg = colors.yellow },
+                info = { fg = colors.cyan },
+              },
+            },
+            {
+              function()
+                local msg = 'No Lsp'
+                local buf_ft = vim.bo.filetype
+                local clients = vim.lsp.get_clients {
+                  bufnr = vim.api.nvim_get_current_buf(),
+                }
+                if next(clients) == nil then
+                  return msg
+                end
+                for _, client in ipairs(clients) do
+                  local filetypes = client.config.filetypes
+                  if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+                    return client.name
+                  end
+                end
+                return msg
+              end,
+              icon = ' :',
+              color = { fg = colors.white, gui = 'bold' },
+            },
+            {
+              function()
+                return '▊'
+              end,
+              color = { fg = colors.blue },
+              padding = { left = 1 },
+            },
+          },
+          lualine_a = {},
+          lualine_b = {},
+          lualine_y = {},
+          lualine_z = {},
+        },
+        inactive_sections = {
+          lualine_a = {},
+          lualine_b = {},
+          lualine_y = {},
+          lualine_z = {},
+          lualine_c = {},
+          lualine_x = {},
+        },
+      }
     end,
   },
 }

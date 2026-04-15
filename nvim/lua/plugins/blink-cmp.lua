@@ -1,4 +1,3 @@
----@type LazySpec
 return {
   { 'xzbdmw/colorful-menu.nvim', opts = {} },
   { 'zbirenbaum/copilot.lua', enabled = false, cmd = 'Copilot', event = 'InsertEnter', opt = {} },
@@ -26,7 +25,19 @@ return {
           -- ['<CR>'] = { 'accept', 'fallback' },
         },
       },
-      keymap = { preset = 'default' },
+      keymap = {
+        preset = 'default',
+        ['<Tab>'] = {
+          'snippet_forward',
+          function() -- sidekick next edit suggestion
+            return require('sidekick').nes_jump_or_apply()
+          end,
+          function() -- copilot inline completion (ghost text)
+            return vim.lsp.inline_completion.get()
+          end,
+          'fallback',
+        },
+      },
       completion = {
         accept = { auto_brackets = { enabled = false } },
         documentation = { auto_show = true, auto_show_delay_ms = 300 },
@@ -83,6 +94,17 @@ return {
           lua = { inherit_defaults = true, 'lazydev' },
         },
         providers = {
+          buffer = {
+            opts = {
+              get_bufnrs = function()
+                local bufs = {}
+                for _, win in ipairs(vim.api.nvim_list_wins()) do
+                  bufs[vim.api.nvim_win_get_buf(win)] = true
+                end
+                return vim.tbl_keys(bufs)
+              end,
+            },
+          },
           -- copilot = {
           --   name = 'copilot',
           --   module = 'blink-cmp-copilot',

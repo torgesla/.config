@@ -1,7 +1,7 @@
 local kmap = vim.keymap
 
 kmap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-kmap.set({ 'i', 'x', 'n', 's' }, '<D-s>', '<cmd>w<cr><esc>', { desc = 'Save file' })
+-- kmap.set({ 'i', 'x', 'n', 's' }, '<D-s>', '<cmd>w<cr><esc>', { desc = 'Save file' })
 kmap.set('n', '<leader>cpa', ':let @+=expand("%:p")<CR>', { desc = 'Copy path (absolute)' })
 kmap.set('n', '<leader>cpr', ':let @+=expand("%")<CR>', { desc = 'Copy path (relative)' })
 
@@ -64,6 +64,9 @@ kmap.set('n', '<leader>tp', '<cmd>tabp<CR>') --go to pre
 
 kmap.set('n', 'Q', '<nop>')
 kmap.set('n', 'U', '<nop>')
+
+kmap.set('n', '<Tab>', '<C-o>', { desc = 'Jump to previous location in jumplist' })
+kmap.set('n', '<S-Tab>', '<C-i>', { desc = 'Jump to next location in jumplist' })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
