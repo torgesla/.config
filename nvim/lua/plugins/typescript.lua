@@ -6,13 +6,21 @@ return {
       on_attach = function(client, bufnr)
         require('twoslash-queries').attach(client, bufnr)
       end,
-      complete_function_calls = true,
-      expose_as_code_action = 'all',
-      code_lens = 'all',
-      include_completions_with_insert_text = true,
-      jsx_close_tag = {
-        enable = true,
-        filetypes = { 'javascriptreact', 'typescriptreact' },
+      -- handlers = {
+      --   ['textDocument/publishDiagnostics'] = function() end,
+      -- },
+      settings = {
+        tsserver_file_preferences = {
+          importModuleSpecifierEnding = 'minimal',
+        },
+        complete_function_calls = true,
+        expose_as_code_action = 'all',
+        code_lens = 'off',
+        include_completions_with_insert_text = true,
+        jsx_close_tag = {
+          enable = true,
+          filetypes = { 'javascriptreact', 'typescriptreact' },
+        },
       },
     },
   },
@@ -40,7 +48,7 @@ return {
       {
         '<C-k>',
         '<cmd>TwoslashQueriesInspect<CR>',
-        desc = 'Open mini files',
+        desc = 'Twoslash: inspect type',
       },
     },
   },

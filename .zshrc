@@ -19,6 +19,10 @@ if [ -f "$XDG_CONFIG_HOME/zsh/company-specific.zsh" ]; then
   source "$XDG_CONFIG_HOME/zsh/company-specific.zsh"
 fi
 
+# --- Completions fpath ---
+# Docker CLI completions — must be before compinit (called by Oh My Zsh).
+fpath=(/Users/torgeir.laurvik/.docker/completions $fpath)
+
 # --- Oh My Zsh Setup ---
 # Theme and plugins for Oh My Zsh.
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -41,10 +45,6 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 [ -s "/Users/torgeir/.bun/_bun" ] && source "/Users/torgeir/.bun/_bun" # Bun completions
 
-# volta
-export VOLTA_HOME="$HOME/.volta"
-export VOLTA_FEATURE_PNPM=1
-export PATH="$VOLTA_HOME/bin:$PATH"
 
 # pnpm
 export PNPM_HOME="/Users/torgeir/Library/pnpm"
@@ -58,6 +58,7 @@ export PATH="$PATH:/Users/torgeir/.local/bin" # Created by `pipx`
 
 # --- Plugin/Tool Initializations ---
 # Source plugins and initialize tools that are not part of Oh My Zsh's plugin system.
+source "$(brew --prefix)/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh"
 source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
@@ -69,6 +70,11 @@ source <(fzf --zsh)     # fzf key bindings
 # --- Powerlevel10k Configuration ---
 # This needs to be sourced after Oh My Zsh and its plugins are set up.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# --- fzf-tab Configuration ---
+# Required: prevent zsh showing its built-in menu so fzf-tab can capture completions.
+# Must match OMZ's specificity (`:completion:*:*:*:*:*`) to override its `menu select`.
+zstyle ':completion:*:*:*:*:*' menu no
 
 # --- Aliases ---
 # Group your aliases by category for better readability.
@@ -206,8 +212,9 @@ fi
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/torgeir.laurvik/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
+
+# volta — after nvm so its shim takes precedence
+export VOLTA_HOME="$HOME/.volta"
+export VOLTA_FEATURE_PNPM=1
+export PATH="$VOLTA_HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"

@@ -43,6 +43,7 @@
 
 ---@type vim.lsp.Config
 return {
+  enabled = false, -- disabled: typescript-tools.nvim replaces ts_ls
   init_options = { hostInfo = 'neovim' },
   cmd = { 'typescript-language-server', '--stdio' },
   filetypes = {

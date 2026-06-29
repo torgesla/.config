@@ -1,5 +1,3 @@
----@module 'lazy.core.spec'
----@type LazySpec[]
 return {
   {
     'mfussenegger/nvim-lint',
@@ -13,7 +11,7 @@ return {
         python = { 'ruff' },
       },
     },
-    config = function(_, opts)
+    config = function(_)
       local lint = require 'lint'
       lint.linters_by_ft = {
         javascript = { 'eslint_d' },

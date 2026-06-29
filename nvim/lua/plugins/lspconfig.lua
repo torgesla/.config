@@ -30,36 +30,18 @@ return {
     opts = {
       capabilities = require('blink.cmp').get_lsp_capabilities(),
       servers = {
-        emmylua_ls = {
-          filetypes = { 'lua' },
-          settings = {
-            Lua = {
-              completion = { callSnippet = 'Replace' },
-              diagnostics = { globals = { 'vim', 'require' } },
-              runtime = { version = 'LuaJIT' },
-              telemetry = { enable = false },
-              workspace = { library = vim.api.nvim_get_runtime_file('', true) },
-            },
-          },
-        },
+        -- Full emmylua_ls config (correct `emmylua` settings schema) lives in
+        -- after/lsp/emmylua_ls.lua; here we only enable it.
+        emmylua_ls = {},
         eslint = {},
+        fallow = {},
         gopls = {},
         oxfmt = {},
         oxlint = {},
         jsonls = {},
         marksman = {},
-        lua_ls = {
-          filetypes = { 'lua' },
-          settings = {
-            Lua = {
-              completion = { callSnippet = 'Replace' },
-              diagnostics = { globals = { 'vim', 'require' } },
-              runtime = { version = 'LuaJIT' },
-              telemetry = { enable = false },
-              workspace = { library = vim.api.nvim_get_runtime_file('', true) },
-            },
-          },
-        },
+        -- lua_ls disabled — using emmylua_ls as the single Lua server. Re-enable
+        -- this block (and disable emmylua_ls) to switch back.
         -- copilot = {
         --   on_attach = function(client, bufnr)
         --     if client:supports_method('textDocument/inlineCompletion', bufnr) then
@@ -73,7 +55,13 @@ return {
         typos_lsp = {
           filetypes = { '*', 'oil' },
         },
-        -- tsgo = {},
+        -- tsgo = {
+        --   filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
+        --   on_attach = function(client, _)
+        --     -- diagnostics-only: ts_ls + typescript-tools handle all other capabilities
+        --     client.server_capabilities = {}
+        --   end,
+        -- },
         yamlls = {
           settings = {
             yaml = {

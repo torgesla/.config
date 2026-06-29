@@ -49,13 +49,13 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.wrap = false
-vim.opt.linebreak = true
 vim.opt.textwidth = 100
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
 
 -- Show which line your cursor is on
 vim.opt.cursorline = true
+
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
@@ -84,3 +84,6 @@ vim.g.editorconfig = true
 -- vim.cmd [[
 --   highlight CursorLine guibg=#1e1e2e guifg=NONE
 -- ]]
+
+-- Enable experimental ui2 — replaces noice.nvim for core UI
+-- require('vim._core.ui2').enable { msg = { targets = 'msg' } }

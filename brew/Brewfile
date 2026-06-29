@@ -1,149 +1,276 @@
+tap "asmvik/formulae", "https://github.com/asmvik/homebrew-formulae.git"
 tap "epk/epk"
 tap "felixkratz/formulae"
 tap "infisical/get-cli"
-tap "jetbrains/utils"
-tap "koekeishiya/formulae"
+tap "jetbrains/utils", "https://github.com/JetBrains/homebrew-utils"
 tap "nikitabobko/tap"
 tap "osx-cross/arm"
 tap "osx-cross/avr"
 tap "oven-sh/bun"
 tap "qmk/qmk"
+tap "s-sigdel/tap", "https://github.com/S-Sigdel/homebrew-tap"
+# Plugin manager for zsh, inspired by antigen and antibody
 brew "antidote"
+# Codec library for encoding and decoding AV1 video streams
 brew "aom"
+# Companion library to apr, the Apache Portable Runtime library
 brew "apr-util"
+# BLAKE2 b2sum reference binary
 brew "b2sum"
+# C library implementing the SSH2 protocol
 brew "libssh2"
+# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Get/set bluetooth power and discoverable state
 brew "blueutil"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
+# Core application library for C
 brew "glib"
+# Console Bonsai is a bonsai tree generator, written in C using ncurses
 brew "cbonsai"
+# OpenType text shaping engine
 brew "harfbuzz"
+# New file format for still image compression
 brew "jpeg-xl"
+# Library for encoding and decoding .avif files
 brew "libavif"
+# Versatile and fast Unicode/ASCII/ANSI graphics renderer
 brew "chafa"
+# Utility for connecting securely to your Cloud SQL instances
 brew "cloud-sql-proxy"
+# Console Matrix
 brew "cmatrix"
+# Color-highlighted diff(1) output
 brew "colordiff"
+# Libraries to talk to Microsoft SQL Server and Sybase databases
 brew "freetds"
+# General-purpose scripting language
 brew "php"
+# Dependency Manager for PHP
 brew "composer"
+# Diff that understands syntax
 brew "difftastic"
+# Open-source, cross-platform JavaScript runtime environment
 brew "node"
+# Language service for Docker Compose documents
 brew "docker-compose-langserver"
+# Platform keystore credential helper for Docker
 brew "docker-credential-helper"
+# Lua Language Server
 brew "emmylua_ls"
+# Speed up eslint to accelerate your development workflow
 brew "eslint_d"
+# Modern, maintained replacement for ls
 brew "eza"
+# Simple, fast and user-friendly alternative to find
 brew "fd"
+# User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
+# Command-line fuzzy finder written in Go
 brew "fzf"
+# Replace zsh completion selection menu with fzf
 brew "fzf-tab"
+# Interact with Google Gemini AI models from the command-line
 brew "gemini-cli"
+# GitHub command-line tool
 brew "gh"
+# Distributed revision control system
 brew "git"
+# Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# GNU Privacy Guard (OpenPGP)
 brew "gnupg"
+# Language server for the Go language
 brew "gopls"
+# Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
+# Improved top (interactive process viewer)
 brew "htop"
+# ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
 brew "libheif"
+# Tools and libraries to manipulate images in select formats
 brew "imagemagick"
+# JSON parser and validator with a CLI
 brew "jsonlint"
+# Intelligent Kotlin support for any editor/IDE using the Language Server Protocol
 brew "kotlin-language-server"
+# Static analysis tool for Kubernetes YAML files and Helm charts
 brew "kube-linter"
+# Template-free customization of Kubernetes YAML manifests
 brew "kustomize"
+# Lazier way to manage everything docker
 brew "lazydocker"
+# Simple terminal UI for git commands
 brew "lazygit"
+# Count lines of code quickly
 brew "loc"
+# Clone of ls with colorful output, file type icons, and more
 brew "lsd"
+# Language Server for the Lua language
 brew "lua-language-server"
+# Package manager for the Lua programming language
 brew "luarocks"
+# Fast, flexible, config-based cli for linting Markdown/CommonMark files
 brew "markdownlint-cli2"
+# Language Server Protocol for Markdown
 brew "marksman"
+# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Open-source, cross-platform JavaScript runtime environment
 brew "node@18"
+# Modern shell for the GitHub era
 brew "nushell"
+# Data loading tool for PostgreSQL
 brew "pgloader"
+# Execute binaries from Python packages in isolated environments
 brew "pipx"
+# Package compiler and linker metadata toolkit
 brew "pkgconf"
+# Tool for managing OCI containers and pods
 brew "podman"
+# Object-relational database system
 brew "postgresql@14"
+# Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
 brew "prettier"
+# Prettier daemon
 brew "prettierd"
+# Python version management
 brew "pyenv"
+# It's not just a linter that annoys you!
 brew "pylint"
+# Static type checker for Python
 brew "pyright"
+# Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
+# Generic machine emulator and virtualizer
 brew "qemu"
+# Ultra-fast CSV data-wrangling toolkit
 brew "qsv"
+# Find bugs in your JavaScript code
 brew "quick-lint-js"
+# Persistent key-value database, with built-in net interface
 brew "redis"
+# Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Tool for downloading RTMP streaming media
 brew "rtmpdump"
+# Extremely fast Python linter, written in Rust
 brew "ruff"
+# Safe, concurrent, practical language
 brew "rust"
+# Smart session manager for the terminal
 brew "sesh"
+# Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
+# Opinionated Lua code formatter
 brew "stylua"
+# Modernized, complete, self-contained TeX/LaTeX engine
 brew "tectonic"
+# OCR (Optical Character Recognition) engine
 brew "tesseract"
+# Official tldr client written in Rust
 brew "tlrc"
+# Terminal multiplexer
 brew "tmux"
+# Upgrade all the things
 brew "topgrade"
+# Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Parser generator tool
 brew "tree-sitter-cli"
+# Language Server for typos-cli
 brew "typos-lsp"
+# Simple terminal image viewer written in Rust
 brew "viu"
+# JavaScript toolchain manager for reproducible environments
 brew "volta"
+# Language servers for HTML, CSS, JavaScript, and JSON extracted from vscode
 brew "vscode-langservers-extracted"
+# Internet file retriever
 brew "wget"
+# CSV CLI magician written in Rust
 brew "xan"
+# Language Server for Yaml Files
 brew "yaml-language-server"
+# JavaScript package manager
 brew "yarn"
+# Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
+# Pluggable terminal workspace, with terminal multiplexer as the base feature
 brew "zellij"
+# Shell extension to navigate your filesystem faster
 brew "zoxide"
+# Real-time type-ahead completion for Zsh
 brew "zsh-autocomplete"
+# Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
+# Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
-brew "felixkratz/formulae/borders"
-brew "infisical/get-cli/infisical"
-brew "jetbrains/utils/kotlin-lsp"
-brew "oven-sh/bun/bun"
-brew "qmk/qmk/qmk"
+# Terminal trainer that drills advanced Vim techniques in real vim/nvim
+brew "s-sigdel/tap/vimhjkl", trusted: true
+# Enable Windows-like alt-tab
 cask "alt-tab"
+# Display management tool
 cask "betterdisplay"
+# OpenAI's official ChatGPT desktop app
 cask "chatgpt"
+# Ghostty-based terminal with vertical tabs and notifications for AI coding agents
+cask "cmux"
+# Terminal emulator mimicking the old cathode display
 cask "cool-retro-term"
+# Universal database tool and SQL client
 cask "dbeaver-community"
+# Database version management tool
 cask "dbngin"
+# Voice and text chat software
 cask "discord"
+# App to build and share containerised applications and microservices
 cask "docker-desktop"
+# Productivity app
 cask "dropzone"
 cask "font-fira-code-nerd-font"
 cask "font-hack-nerd-font"
 cask "epk/epk/font-sf-mono-nerd-font"
+# Set of tools to manage resources and applications hosted on Google Cloud
 cask "gcloud-cli"
+# Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
-cask "iterm2"
+# Menu bar manager
 cask "jordanbaird-ice"
+# Keyboard customiser
 cask "karabiner-elements"
+# Application launcher
 cask "leader-key"
+# Software for Logitech devices
 cask "logi-options+"
+# Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
+# Calculator and converter application
 cask "numi"
+# Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# System and utility switches
 cask "only-switch"
+# Browse, manage, inspect containers and images
 cask "podman-desktop"
+# Collaboration platform for API development
 cask "postman"
+# Control your tools with a few keystrokes
 cask "raycast"
+# Video game digital distribution service
 cask "steam"
+# Native GUI tool for relational databases
 cask "tableplus"
+# Messaging app with a focus on speed and security
 cask "telegram"
+# JDK from the Eclipse Foundation (Adoptium)
 cask "temurin"
+# Music streaming service with high fidelity sound and hi-def video quality
 cask "tidal"
+# Open-source code editor
 cask "visual-studio-code"
+# Native desktop client for WhatsApp
 cask "whatsapp"
 vscode "albert.tabout"
 vscode "bmewburn.vscode-intelephense-client"
@@ -158,7 +285,6 @@ vscode "editorconfig.editorconfig"
 vscode "esbenp.prettier-vscode"
 vscode "estevamsouza.the-best-themes-for-programmers"
 vscode "fabiospampinato.vscode-diff"
-vscode "github.copilot-chat"
 vscode "github.vscode-github-actions"
 vscode "github.vscode-pull-request-github"
 vscode "graphql.vscode-graphql"
@@ -207,3 +333,4 @@ vscode "wayou.vscode-todo-highlight"
 vscode "xdebug.php-debug"
 vscode "yoavbls.pretty-ts-errors"
 vscode "yzhang.markdown-all-in-one"
+npm "corepack"

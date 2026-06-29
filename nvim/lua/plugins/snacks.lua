@@ -74,24 +74,20 @@ return {
           local buffers = vim.fn.getbufinfo { buflisted = 1 }
 
           if #buffers < 2 then
-            return require('snacks.picker').smart()
+            return require('fff').find_files()
           end
 
           if #buffers == 2 then
             return vim.cmd.bnext()
           end
 
-          require('snacks.picker').buffers(
-            ---@module "snacks"
-            ---@type snacks.picker.buffers.Config
-            {
-              current = false,
-              sort_lastused = true,
-              on_show = function()
-                vim.cmd.stopinsert()
-              end,
-            }
-          )
+          require('snacks.picker').buffers {
+            current = false,
+            sort_lastused = true,
+            on_show = function()
+              vim.cmd.stopinsert()
+            end,
+          }
         end
 
         local git_check = vim.system({ 'git', 'status', '--porcelain' }):wait()
@@ -101,13 +97,10 @@ return {
           local file_count = #files
 
           if file_count > 1 then
-            return require('snacks.picker').git_status(
-              ---@type snacks.picker.type.status.Config
-              {
-                current = false,
-                sort_lastused = true,
-              }
-            )
+            return require('snacks.picker').git_status {
+              current = false,
+              sort_lastused = true,
+            }
           end
         end
 
@@ -124,13 +117,13 @@ return {
       desc = 'Colorschemes',
     },
 
-    {
-      '<leader>e',
-      function()
-        require('snacks').picker.smart()
-      end,
-      desc = 'Find smart file',
-    },
+    -- {
+    --   '<leader>e',
+    --   function()
+    --     require('snacks').picker.smart()
+    --   end,
+    --   desc = 'Find smart file',
+    -- },
 
     {
       '<leader>fe',
@@ -142,18 +135,18 @@ return {
       desc = 'File Explorer',
     },
 
-    {
-      '<leader>s',
-      function()
-        ---@type snacks.picker.grep.Config
-        local opts = {
-          exclude = { 'package-lock.json', 'changelog.txt' },
-          regex = false,
-        }
-        require('snacks').picker.grep(opts)
-      end,
-      desc = 'Fzf search in project',
-    },
+    -- {
+    --   '<leader>s',
+    --   function()
+    --     ---@type snacks.picker.grep.Config
+    --     local opts = {
+    --       exclude = { 'package-lock.json', 'changelog.txt' },
+    --       regex = false,
+    --     }
+    --     require('snacks').picker.grep(opts)
+    --   end,
+    --   desc = 'Fzf search in project',
+    -- },
 
     {
       '<leader>fr',
@@ -193,7 +186,7 @@ return {
       function()
         local params = vim.lsp.util.make_range_params()
         params.context = {
-          diagnostics = vim.lsp.diagnostic.get_line_diagnostics(),
+          diagnostics = vim.diagnostic.get(0, { lnum = vim.api.nvim_win_get_cursor(0)[1] - 1 }),
         }
 
         vim.lsp.buf_request_all(0, 'textDocument/codeAction', params, function(results)

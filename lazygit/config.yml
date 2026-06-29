@@ -145,7 +145,7 @@ gui:
   splitDiff: auto
   # Default size for focused window. Window size can be changed from within Lazygit with '+' and '_' (but this won't change the default).
   # One of: 'normal' (default) | 'half' | 'full'
-  screenMode: normal
+  screenMode: half
   # Window border style.
   # One of 'rounded' (default) | 'single' | 'double' | 'hidden'
   border: rounded
@@ -435,7 +435,7 @@ keybinding:
     markCommitAsBaseForRebase: B
     tagCommit: T
     checkoutCommit: <space>
-    resetCherryPick: <c-R>
+    resetCherryPick: <c-r>
     copyCommitAttributeToClipboard: "y"
     openLogMenu: <c-l>
     openInBrowser: o
