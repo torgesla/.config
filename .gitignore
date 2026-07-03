@@ -1,15 +1,34 @@
-# configstore/update-notifier-@github/copilot.json
-# configstore/update-notifier-@google/gemini-cli.json
-**/node_modules
+# --- OS / editor cruft ---
 .DS_Store
-.copilot/**
+**/node_modules
+
+# --- Secrets (never commit) ---
 .env
 .env.*
-aerospace/workspace-history
-composer/**
-configstore/**
-gcloud/**
-iterm2/**
-nvm/**
-raycast/**
-tmux/plugins/**
+# company env holds a registry token; kept local-only, never tracked
+common/zsh/.config/zsh/company.env
+**/company.env
+
+# --- Stow-managed runtime state (installed by tools, not tracked) ---
+# tmux plugins are cloned by TPM into the (folded) tmux config dir
+common/tmux/.config/tmux/plugins/
+# aerospace writes its workspace history next to its config
+macos/aerospace/.config/aerospace/workspace-history
+
+# --- Generated/state dirs that used to live in ~/.config ---
+# Not part of the dotfiles; ignored so a stray tool run can't re-add them here.
+.copilot/
+cagent/
+colima/
+composer/
+configstore/
+gcloud/
+github-copilot/
+homebrew/
+htop/
+iterm2/
+nvm/
+raycast/
+sanity/
+topgrade.d/
+yarn/
